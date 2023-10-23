@@ -6,6 +6,14 @@
 a {
   text-decoration: none;
 }
+html,
+body {
+  font-family: "Poppins";
+  font-weight: 400;
+}
+p {
+  color: #5f6c7b;
+}
 @font-face {
   font-family: "Poppins";
   src: url("../font/Poppins-Regular.ttf") format("ttf");
@@ -36,16 +44,8 @@ a {
   src: url("../font/Poppins-Black.ttf") format("ttf");
   font-weight: 900;
 }
-html,
-body {
-  font-family: "Poppins";
-  font-weight: 400;
-}
-p {
-  color: #5f6c7b;
-}
 
-/*=========== login ===========*/
+/*=========== login &register ===========*/
 .card-form {
   width: 100%;
 }
@@ -61,7 +61,6 @@ p {
   font-weight: 600;
 }
 .underline {
-  width: 50%;
   background-color: #094067;
   width: 110px;
   height: 2px;
@@ -135,11 +134,4 @@ input {
   div.illustration {
     display: none !important;
   }
-}
-
-/*=========== Accordion ===========*/
-.accordion-button.collapsed::after {
-  background-image: url("../img/plus.png");
-  background-size: auto;
-  background-position: center;
 }

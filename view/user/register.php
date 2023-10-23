@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - SICC</title>
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Sign Up | SICC</title>
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 
 <body>
-    <div id="login" class="container-fluid">
+    <div id="register" class="container-fluid">
         <div class="row vh-100">
             <div class="col-lg-6 illustration d-flex justify-content-center align-items-center">
-                <img src="assets/img/illustration_register.png" alt="gambar login">
+                <img class="img-fluid" src="../../assets/img/illustration_register.png" alt="gambar register">
             </div>
             <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <form class="card-form">
@@ -32,13 +32,13 @@
                             <label class="input-label">Username</label>
                         </div>
                         <button class="btn">Sign Up</button>
-                        <p class="mt-2">Sudah punya akun? sini <a href="login.php">login</a></p>
+                        <p class="mt-2">Sudah punya akun? sini <a href="/login">login</a></p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
