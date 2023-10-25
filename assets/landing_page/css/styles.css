@@ -1,0 +1,241 @@
+/*=========== Root ===========*/
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+html,
+body {
+  font-family: "Poppins";
+  font-weight: 400;
+}
+p {
+  color: #5f6c7b;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-Regular.ttf") format("ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-Medium.ttf") format("ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-SemiBold.ttf") format("ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-Bold.ttf") format("ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-ExtraBold.ttf") format("ttf");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-Black.ttf") format("ttf");
+  font-weight: 900;
+}
+
+/*=========== login &register ===========*/
+.card-form {
+  width: 100%;
+}
+.title-forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.title-forms .title {
+  color: #094067;
+  font-size: 50px;
+  font-weight: 600;
+}
+.underline {
+  background-color: #094067;
+  width: 110px;
+  height: 2px;
+}
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inputGroup button {
+  width: 50%;
+  background-color: #2d5174;
+  color: white;
+  font-size: 20px;
+  border: none;
+}
+.inputGroup button:hover {
+  background-color: #496f94;
+  color: white;
+}
+.inputGroup p {
+  width: 50%;
+}
+input {
+  appearance: none;
+  border-radius: 0;
+}
+.input {
+  width: 50%;
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  padding-top: 1.5rem;
+  & + .input {
+    margin-top: 1.5rem;
+  }
+}
+
+.input-label {
+  color: #8f9fad;
+  position: absolute;
+  top: 1.5rem;
+  transition: 0.25s ease;
+}
+
+.input-field {
+  border: 0;
+  z-index: 1;
+  background-color: transparent;
+  border-bottom: 2px solid #8f9fad;
+  font: inherit;
+  font-size: 1.125rem;
+  padding: 0.25rem 0;
+  &:focus,
+  &:valid {
+    outline: 0;
+    border-bottom-color: #2d5174;
+    & + .input-label {
+      color: #2d5174;
+      transform: translateY(-1.5rem);
+    }
+  }
+}
+
+/*=========== illustration login ===========*/
+.illustration {
+  background: url("../img/Illustration_bg.png");
+  background-size: cover;
+}
+@media (max-width: 768px) {
+  div.illustration {
+    display: none !important;
+  }
+}
+
+/*----------- Landing Page -----------*/
+
+/*--------------------------------------------------------------
+# Section General
+--------------------------------------------------------------*/
+section {
+  padding: 50px 0;
+  overflow: hidden;
+}
+
+.section-title {
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--abu);
+}
+
+.section-title h2::before,
+.section-title h2::after {
+  content: "";
+  width: 100px;
+  height: 1px;
+  display: inline-block;
+  background: var(--orange);
+  margin: 4px 10px;
+}
+
+.section-title p {
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #151515;
+}
+
+/*=========== Navbar ===========*/
+.navbar {
+  background-color: rgba(0, 0, 0, 0);
+}
+.navbar-brand img {
+  margin-left: 100px;
+}
+.navbar-nav li {
+  margin-right: 50px;
+}
+.navbar-nav li a {
+  font-family: "Poppins";
+  font-weight: 500;
+}
+.navbar-nav li:nth-child(4) {
+  margin-right: 130px;
+}
+.navbar-nav li:nth-child(4) button {
+  background-color: white;
+  border-radius: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/*=========== Hero ===========*/
+#hero {
+  width: 100%;
+  height: 100vh;
+}
+.hero-img img {
+  width: auto;
+  height: 570px;
+}
+#hero div div:nth-child(1) {
+  position: relative;
+  z-index: -1;
+}
+#hero div div:nth-child(1) img:nth-child(1) {
+  position: fixed;
+  right: -100px;
+  top: 0;
+  width: auto;
+  height: 1000px;
+}
+#hero div div:nth-child(1) img:nth-child(2) {
+  position: fixed;
+  right: 0px;
+  top: 0;
+  width: auto;
+  height: 700px;
+}
+#hero div div:nth-child(2) img {
+}
+
+/*=========== Accordion FAQ ===========*/
+.accordion-button {
+  background-color: #094067;
+  color: white;
+}

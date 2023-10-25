@@ -15,6 +15,12 @@ switch ($uri) {
     case '/forgetPassword':
         include 'view/user/forgetPassword.php';
         break;
+    case '/admin':
+        include 'view/admin/dashboard.php';
+        break;
+    case '/admin/artikel':
+        include 'view/admin/artikel.php';
+        break;
     default:
         include 'view/user/404.php';
         break;

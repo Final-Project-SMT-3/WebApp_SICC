@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forget Password | SICC</title>
-    <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/landing_page/css/styles.css">
 </head>
 
 <body>
@@ -36,11 +36,11 @@
                 </form>
             </div>
             <div class="col-lg-6 illustration d-flex justify-content-center align-items-center">
-                <img class="img-fluid" src="../../assets/img/illustration_forgetpass.png" alt="gambar login">
+                <img class="img-fluid" src="assets/landing_page/img/illustration_forgetpass.png" alt="gambar login">
             </div>
         </div>
     </div>
-    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/landing_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
