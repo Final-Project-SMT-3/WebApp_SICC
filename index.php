@@ -4,25 +4,25 @@ $uri = $_SERVER['REQUEST_URI'];
 
 switch ($uri) {
     case '/':
-        include 'view/user/index.php';
+        include 'views/user/index.php';
         break;
     case '/login':
-        include 'view/user/login.php';
+        include 'views/user/login.php';
         break;
     case '/register':
-        include 'view/user/register.php';
+        include 'views/user/register.php';
         break;
     case '/forgetPassword':
-        include 'view/user/forgetPassword.php';
+        include 'views/user/forgetPassword.php';
         break;
     case '/admin':
-        include 'view/admin/dashboard.php';
+        include 'views/admin/dashboard.php';
         break;
     case '/admin/artikel':
-        include 'view/admin/artikel.php';
+        include 'views/admin/artikel.php';
         break;
     default:
-        include 'view/user/404.php';
+        include 'views/user/404.php';
         break;
 }
 ?>
