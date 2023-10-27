@@ -1,6 +1,8 @@
 <?php
-include("components/head.php");
+
+include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 ?>
+
 
 <!-- Body Wrapper -->
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -8,7 +10,7 @@ include("components/head.php");
 
     <!-- Sidebar Start -->
     <?php
-    include("components/sidebar.php");
+    include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/sidebar.php');
     ?>
     <!--  Sidebar End -->
 
@@ -17,10 +19,11 @@ include("components/head.php");
 
         <!-- Header Start -->
         <?php
-        include("components/header.php");
+        include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/header.php');
         ?>
         <!-- Header End -->
 
+        <!-- Content End -->
         <div class="container-fluid">
             <!--  Row 1 -->
             <div class="row">
@@ -118,9 +121,10 @@ include("components/head.php");
                 </div>
             </div>
         </div>
+        <!-- Content End -->
     </div>
 </div>
 
 <?php
-include("components/scripts.php");
+include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/scripts.php');
 ?>

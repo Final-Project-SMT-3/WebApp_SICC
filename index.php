@@ -19,7 +19,25 @@ switch ($uri) {
         include 'views/admin/dashboard.php';
         break;
     case '/admin/artikel':
-        include 'views/admin/artikel.php';
+        include 'views/admin/pages/artikel/artikel.php';
+        break;
+    case '/admin/artikel/add':
+        include 'views/admin/pages/artikel/artikel_add.php';
+        break;
+    case '/admin/lomba':
+        include 'views/admin/pages/lomba/lomba.php';
+        break;
+    case '/admin/lomba/add':
+        include 'views/admin/pages/lomba/lomba_add.php';
+        break;
+    case '/admin/faq':
+        include 'views/admin/pages/faq/faq.php';
+        break;
+    case '/admin/faq/add':
+        include 'views/admin/pages/faq/faq_add.php';
+        break;
+    case '/admin/pengajuan':
+        include 'views/admin/pages/pengajuan/pengajuan.php';
         break;
     default:
         include 'views/user/404.php';
