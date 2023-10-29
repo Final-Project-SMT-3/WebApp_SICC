@@ -39,6 +39,9 @@ switch ($uri) {
     case '/admin/pengajuan':
         include 'views/admin/pages/pengajuan/pengajuan.php';
         break;
+    case '/admin/pengajuan/tinjauan':
+        include 'views/admin/pages/pengajuan/pengajuan_tinjau.php';
+        break;
     default:
         include 'views/user/404.php';
         break;

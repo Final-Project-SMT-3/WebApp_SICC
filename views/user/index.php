@@ -46,7 +46,7 @@
                     <img src="assets/landing_page/img/vector_heroR2.png" alt="img vector 2">
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 mt-6">
                         <h6 class="fs-1" style="color: #094067;"><b>Selamat Datang di SI CC !</b></h6>
                         <p class="lead my-4 fs-5">
                             SI CC adalah sistem Informasi yang <br>
