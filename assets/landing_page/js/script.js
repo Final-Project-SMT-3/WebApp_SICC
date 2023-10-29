@@ -71,15 +71,14 @@
    * Scroll Navbar Effect
    */
   const navbarlinksBackground = () => {
-    if (window.scrollY > 150) {
-      // Ketika pengguna telah menggulir ke bawah sejauh 100px, latar belakang akan berubah.
-      document.querySelector(".fixed-top").style.background =
-        "rgba(9, 64, 103, 1)";
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY > 100) {
+      // Ubah warna latar belakang menjadi putih
+      navbar.style.backgroundColor = "white";
     } else {
-      // Kembali ke latar belakang awal jika scroll ke atas.
-      document.querySelector(".fixed-top").style.background =
-        "rgba(0, 0, 0, 0)";
+      // Jika scroll di atas 100px, kembalikan ke transparan
+      navbar.style.backgroundColor = "rgba(0, 0, 0, 0)";
     }
   };
-  onscroll(document, navbarlinksBackground);
+  onscroll(window, navbarlinksBackground);
 })();

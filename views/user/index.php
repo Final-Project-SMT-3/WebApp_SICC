@@ -10,12 +10,12 @@
 </head>
 
 <body style="background-color: #f2f2f2;">
-    <nav class="navbar navbar-expand-lg fixed-top" aria-label="Fifth navbar example">
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="assets/landing_page/img/logo.png" alt="Logo SI CC" width="90px"
+            <a class="navbar-brand" href="#"><img src="assets/landing_page/img/logo.png" alt="Logo SI CC" width="60px"
                     class="img-fluid"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsCollapse"
-                aria-controls="navbarsCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarsCollapse" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -45,14 +45,17 @@
                     <img src="assets/landing_page/img/vector_heroR1.png" alt="img vector">
                     <img src="assets/landing_page/img/vector_heroR2.png" alt="img vector 2">
                 </div>
-                <div class="row">
-                    <div class="col-lg-6 mt-6">
+                <div class="row hero-content">
+                    <div class="col-lg-6">
                         <h6 class="fs-1" style="color: #094067;"><b>Selamat Datang di SI CC !</b></h6>
                         <p class="lead my-4 fs-5">
                             SI CC adalah sistem Informasi yang <br>
                             menyatukan berbagai macam informasi lomba <br>
                             seperti PKM, KMIPN, Gemastik, dan Pilmapres
                         </p>
+                        <a href="#apaItu">
+                            <button class="btn btn-danger">Coba</button>
+                        </a>
                     </div>
                     <div class="col-lg-6 hero-img">
                         <img src="assets/landing_page/img/hero_img.png" alt="">
@@ -60,9 +63,11 @@
                 </div>
             </div>
         </section>
+        <section id="apaItu">
+            <button class="btn btn-primary">Coba</button>
+        </section>
     </main>
 
-    <script src="assets/landing_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+    <?php
+    include("components/scripts.php");
+    ?>
