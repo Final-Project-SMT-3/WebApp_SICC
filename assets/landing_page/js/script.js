@@ -72,12 +72,20 @@
    */
   const navbarlinksBackground = () => {
     const navbar = document.getElementById("navbar");
+    const navbarLink = document.getElementById("navbarLink");
+
     if (window.scrollY > 100) {
-      // Ubah warna latar belakang menjadi putih
-      navbar.style.backgroundColor = "white";
+      navbar.classList.remove("transparent");
+      navbar.classList.add("scrolled");
+
+      navbarLink.classList.remove("hitam");
+      navbarLink.classList.add("biru");
     } else {
-      // Jika scroll di atas 100px, kembalikan ke transparan
-      navbar.style.backgroundColor = "rgba(0, 0, 0, 0)";
+      navbar.classList.remove("scrolled");
+      navbar.classList.add("transparent");
+
+      navbarLink.classList.remove("biru");
+      navbarLink.classList.add("hitam");
     }
   };
   onscroll(window, navbarlinksBackground);
