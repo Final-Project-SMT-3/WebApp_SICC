@@ -37,7 +37,7 @@
   /**
    * Navbar links active state on scroll
    */
-  let navbarlinks = select("#navbarNav .scrollto", true);
+  let navbarlinks = select(".scrollto", true);
   const navbarlinksActive = () => {
     let position = window.scrollY + 200;
     navbarlinks.forEach((navbarlink) => {
@@ -89,4 +89,12 @@
     }
   };
   onscroll(window, navbarlinksBackground);
+
+  window.addEventListener("load", () => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      mirror: false,
+    });
+  });
 })();
