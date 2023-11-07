@@ -110,32 +110,34 @@
         </section>
         <section id="tentangKita">
 
-            <div class="section-title d-flex flex-column justify-content-center align-items-center">
+            <div class="section-title d-flex flex-column justify-content-center align-items-center"
+                data-aos="fade-down">
                 <h4>Apa Itu SI CC</h4>
                 <div class="underline"></div>
             </div>
 
             <div class="container d-flex align-items-center">
                 <div class="row d-flex align-items-center">
-                    <div class="col-lg-6 ">
+                    <div class="col-lg-6 " data-aos="fade-right">
                         <p>Lorem ipsum dolor sit amet consectetur. Morbi tellus pharetra euismod cras ut. Ut cursus
                             dictumst vehicula elementum fringilla et. Elementum dictum at urna faucibus leo maecenas
                             enim nisl. Rutrum consectetur id sollicitudin sit.
                             Venenatis euismod dui amet quam at nulla dolor. Tortor enim vitae in pretium. At augue enim
                             feugiat risus. Tellus nisl tincidunt.</p>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" data-aos="fade-left">
                         <img src="assets/landing_page/img/mockup.svg" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
         </section>
         <section id="informasi">
-            <div class="section-title d-flex flex-column justify-content-center align-items-center">
+            <div class="section-title d-flex flex-column justify-content-center align-items-center"
+                data-aos="fade-down">
                 <h4>Informasi Lomba</h4>
                 <div class="underline"></div>
             </div>
-            <div class="container">
+            <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-3">
                         <div class="card">
@@ -143,7 +145,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Program Kreativitas Mahasiswa (PKM)</h6>
                             </div>
-                            <div class="card-footer"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Go somewhere</a></div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -152,7 +154,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Kompetisi Mahasiswa Informatika Politeknik Nasional (KMIPN)</h6>
                             </div>
-                            <div class="card-footer"><a href="#" class="btn btn-primary">Go somewhere</a>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Go somewhere</a>
                             </div>
                         </div>
                     </div>
@@ -163,7 +165,7 @@
                                 <h6 class="card-title">Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan
                                     Komunikasi (Gemastik)</h6>
                             </div>
-                            <div class="card-footer"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Go somewhere</a></div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -172,18 +174,19 @@
                             <div class="card-body">
                                 <h6 class="card-title">Pemilihan Mahasiswa Berprestasi (Pilmapres)</h6>
                             </div>
-                            <div class="card-footer"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Go somewhere</a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <section id="faq">
-            <div class="section-title d-flex flex-column justify-content-center align-items-center">
+            <div class="section-title d-flex flex-column justify-content-center align-items-center"
+                data-aos="fade-down">
                 <h4>Frequently Asked Question</h4>
                 <div class="underline"></div>
             </div>
-            <div class="container">
+            <div class="container" data-aos="fade-up">
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -332,10 +335,11 @@
         </div>
     </footer>
 
-    <div id="preloader"></div>
+    <div class="loader-container" id="preloader">
+        <span class="loader"></span>
+    </div>
     <a href="#hero" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="ti ti-arrow-up"></i></a>
-
 
     <?php
     include("components/scripts.php");

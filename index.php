@@ -6,6 +6,9 @@ switch ($uri) {
     case '/':
         include 'views/user/index.php';
         break;
+    case '/lomba':
+        include 'views/user/infoLomba.php';
+        break;
     case '/login':
         include 'views/user/login.php';
         break;
