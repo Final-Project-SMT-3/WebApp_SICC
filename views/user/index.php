@@ -119,11 +119,11 @@
             <div class="container d-flex align-items-center">
                 <div class="row d-flex align-items-center">
                     <div class="col-lg-6 " data-aos="fade-right">
-                        <p>Lorem ipsum dolor sit amet consectetur. Morbi tellus pharetra euismod cras ut. Ut cursus
-                            dictumst vehicula elementum fringilla et. Elementum dictum at urna faucibus leo maecenas
-                            enim nisl. Rutrum consectetur id sollicitudin sit.
-                            Venenatis euismod dui amet quam at nulla dolor. Tortor enim vitae in pretium. At augue enim
-                            feugiat risus. Tellus nisl tincidunt.</p>
+                        <p>SI CC adalah Sistem Informasi untuk mewadahi Mahasiswa Jurusan Teknologi Informasi
+                           Politeknik Negeri Jember yang ingin mengikuti perlombaan skala nasional seperti PKM,
+                           KMIPN, Gemastik dan Pilmapres. <br>
+                           Diharapkan dengan adanya wadah seperti SI CC, mahasiswa
+                           dapat menyalurkan prestasi akademiknya sesuai bidang lomba yang diikuti.</p>
                     </div>
                     <div class="col-lg-6" data-aos="fade-left">
                         <img src="assets/landing_page/img/mockup.svg" class="img-fluid" alt="">
@@ -145,7 +145,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Program Kreativitas Mahasiswa (PKM)</h6>
                             </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a></div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -154,7 +154,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Kompetisi Mahasiswa Informatika Politeknik Nasional (KMIPN)</h6>
                             </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Go somewhere</a>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                                 <h6 class="card-title">Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan
                                     Komunikasi (Gemastik)</h6>
                             </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a></div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -174,7 +174,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Pemilihan Mahasiswa Berprestasi (Pilmapres)</h6>
                             </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a></div>
                         </div>
                     </div>
                 </div>
