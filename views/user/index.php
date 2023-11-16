@@ -35,7 +35,7 @@
                         <a class="nav-link scrollto" href="#faq">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a href=""><button class="btn">Pendaftaran</button></a>
+                        <a href="/register"><button class="btn">Pendaftaran</button></a>
                     </li>
                 </ul>
             </div>

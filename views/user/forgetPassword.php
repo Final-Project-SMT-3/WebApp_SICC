@@ -14,16 +14,12 @@ include("components/head.php");
                     </p>
                 </div>
                 <div class="inputGroup mt-4">
-                    <div class="input">
-                        <input name="username" type="text" class="input-field" required />
-                        <label class="input-label">Username</label>
-                    </div>
                     <div class="input mb-5">
-                        <input name="password" type="password" class="input-field" required />
-                        <label class="input-label">Password</label>
+                        <input name="password" type="email" class="input-field" required />
+                        <label class="input-label">Email</label>
                     </div>
-                    <button type="submit" name="submit" class="btn">Sign In</button>
-                    <p class="mt-2">Belum punya akun? Ayo <a href="register.php">daftar disini</a></p>
+                    <button type="submit" name="submit" class="btn">Proses</button>
+                    <p class="mt-2">Sudah ingat akunmu? Ayo <a href="register.php">Sign In</a></p>
                 </div>
             </form>
         </div>

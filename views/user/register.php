@@ -16,7 +16,7 @@ include("components/head.php");
                 </div>
                 <div class="inputGroup mt-4">
                     <div class="input">
-                        <input type="email" class="input-field" required />
+                        <input type="text" class="input-field" required />
                         <label class="input-label">E-mail</label>
                     </div>
                     <div class="input mb-5">
