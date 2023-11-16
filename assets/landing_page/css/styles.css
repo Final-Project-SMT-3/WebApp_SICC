@@ -17,6 +17,7 @@ body {
   font-family: "Poppins";
   font-weight: 400;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 p {
   color: #5f6c7b;
@@ -57,6 +58,7 @@ p {
   --biru-font: #094067;
   --ungu: #bc7dbd;
   --putih: #ffffff;
+  --abuabu-gelap: #d9d9d9;
 }
 
 /*--------------------------------------------------------------
@@ -190,46 +192,56 @@ input {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-#preloader {
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 9999;
-  overflow: hidden;
-  background: #151515;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
 }
 
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 0px);
-  left: calc(50% - 30px);
-  border: 6px solid #007bff;
-  border-top-color: #151515;
-  border-bottom-color: #151515;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: animate-preloader 1s linear infinite;
+.loader {
+  color: #fff;
+  font-family: Consolas, Menlo, Monaco, monospace;
+  font-weight: bold;
+  font-size: 78px;
+  opacity: 0.8;
 }
 
-@keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
+.loader:before {
+  content: "{";
+  display: inline-block;
+  animation: pulse 0.4s alternate infinite ease-in-out;
+}
 
-  100% {
-    transform: rotate(360deg);
+.loader:after {
+  content: "}";
+  display: inline-block;
+  animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(0.8);
+    opacity: 0.5;
   }
+}
+
+.content {
+  display: none;
 }
 
 /*--------------------------------------------------------------
 # Section General
 --------------------------------------------------------------*/
 
-section {
+section:not(.section-lomba-hero) {
   height: 100vh;
   padding: 100px 0;
   overflow: hidden;
@@ -266,6 +278,37 @@ section {
   font-weight: 700;
   text-transform: uppercase;
   color: #151515;
+}
+
+/*--------------------------------------------------------------
+# Section Lomba
+--------------------------------------------------------------*/
+#section .section-lomba-hero {
+  padding: 0;
+}
+.section-title-lomba {
+  padding-bottom: 30px;
+}
+.section-title-lomba h4 {
+  font-weight: 400;
+  font-size: 27;
+}
+.section-title-lomba h2 {
+  font-size: 37;
+  font-weight: 600;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  color: var(--abu);
+}
+
+.section-title-lomba h4::after {
+  content: "";
+  width: 100px;
+  height: 2px;
+  display: inline-block;
+  background: var(--hitam);
+  margin: 4px 10px;
 }
 
 /*--------------------------------------------------------------
@@ -426,6 +469,37 @@ ul.biru li:nth-child(5) button:not(:hover) {
 }
 .accordion-button:active {
   background-color: none;
+}
+
+/*--------------------------------------------------------------
+# Hero Lomba
+--------------------------------------------------------------*/
+
+#heroLomba div {
+  position: relative;
+  text-align: left;
+}
+#heroLomba div img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+#heroLomba div h1 {
+  position: absolute;
+  top: 40%;
+  left: 9%;
+}
+
+/*--------------------------------------------------------------
+# Berita Acara
+--------------------------------------------------------------*/
+#beritaAcara div.container:nth-child(2) .col-12 {
+  background-color: var(--abuabu-gelap);
+  border-radius: 20px;
+}
+#beritaAcara div.container:nth-child(2) .col-12 .col-2 i {
+  font-size: 45px;
+  color: var(--biru-bg);
 }
 
 /*--------------------------------------------------------------

@@ -110,32 +110,34 @@
         </section>
         <section id="tentangKita">
 
-            <div class="section-title d-flex flex-column justify-content-center align-items-center">
+            <div class="section-title d-flex flex-column justify-content-center align-items-center"
+                data-aos="fade-down">
                 <h4>Apa Itu SI CC</h4>
                 <div class="underline"></div>
             </div>
 
             <div class="container d-flex align-items-center">
                 <div class="row d-flex align-items-center">
-                    <div class="col-lg-6 ">
-                        <p>Lorem ipsum dolor sit amet consectetur. Morbi tellus pharetra euismod cras ut. Ut cursus
-                            dictumst vehicula elementum fringilla et. Elementum dictum at urna faucibus leo maecenas
-                            enim nisl. Rutrum consectetur id sollicitudin sit.
-                            Venenatis euismod dui amet quam at nulla dolor. Tortor enim vitae in pretium. At augue enim
-                            feugiat risus. Tellus nisl tincidunt.</p>
+                    <div class="col-lg-6 " data-aos="fade-right">
+                        <p>SI CC adalah Sistem Informasi untuk mewadahi Mahasiswa Jurusan Teknologi Informasi
+                            Politeknik Negeri Jember yang ingin mengikuti perlombaan skala nasional seperti PKM,
+                            KMIPN, Gemastik dan Pilmapres. <br>
+                            Diharapkan dengan adanya wadah seperti SI CC, mahasiswa
+                            dapat menyalurkan prestasi akademiknya sesuai bidang lomba yang diikuti.</p>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" data-aos="fade-left">
                         <img src="assets/landing_page/img/mockup.svg" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
         </section>
         <section id="informasi">
-            <div class="section-title d-flex flex-column justify-content-center align-items-center">
+            <div class="section-title d-flex flex-column justify-content-center align-items-center"
+                data-aos="fade-down">
                 <h4>Informasi Lomba</h4>
                 <div class="underline"></div>
             </div>
-            <div class="container">
+            <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-3">
                         <div class="card">
@@ -143,7 +145,8 @@
                             <div class="card-body">
                                 <h6 class="card-title">Program Kreativitas Mahasiswa (PKM)</h6>
                             </div>
-                            <div class="card-footer"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -152,7 +155,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Kompetisi Mahasiswa Informatika Politeknik Nasional (KMIPN)</h6>
                             </div>
-                            <div class="card-footer"><a href="#" class="btn btn-primary">Go somewhere</a>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -163,7 +166,8 @@
                                 <h6 class="card-title">Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan
                                     Komunikasi (Gemastik)</h6>
                             </div>
-                            <div class="card-footer"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -172,18 +176,20 @@
                             <div class="card-body">
                                 <h6 class="card-title">Pemilihan Mahasiswa Berprestasi (Pilmapres)</h6>
                             </div>
-                            <div class="card-footer"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <section id="faq">
-            <div class="section-title d-flex flex-column justify-content-center align-items-center">
+            <div class="section-title d-flex flex-column justify-content-center align-items-center"
+                data-aos="fade-down">
                 <h4>Frequently Asked Question</h4>
                 <div class="underline"></div>
             </div>
-            <div class="container">
+            <div class="container" data-aos="fade-up">
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -281,61 +287,15 @@
         </section>
     </main>
 
-    <footer id="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-5">
-                        <div class="footer-info">
-                            <img src="assets/landing_page/img/logo.svg" width="300px" alt="" class="img-fluid">
-                            <br><br><br>
-                            <p>Jl. Mastrip No.164, Lingkungan Panji, Tegalgede,<br>Kec.
-                                Sumbersari, Kabupaten Jember,<br>Jawa Timur 68121
-                            </p>
-                        </div>
-                    </div>
+    <?php
+    include("components/footer.php");
+    ?>
 
-                    <div class="col-4 footer-links">
-                        <h4 class="mb-4">Kontak</h4>
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <i class="ti ti-phone me-3" style="font-size: 30px;"></i> <a
-                                    href="https://wa.me/083115761027">+62
-                                    8311 5761 027</a>
-                            </div>
-                            <div class="col-12 d-flex align-items-center">
-                                <i class="ti ti-mail me-3" style="font-size: 30px;"></i> <a
-                                    href="#">rayasya.dziqi@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-3 footer-links2">
-                        <h4 class="mb-4">Ikuti Kita</h4>
-                        <div class="row">
-                            <div class="col">
-                                <a href=""><i class="ti ti-brand-instagram"></i></a>
-                            </div>
-                            <div class="col">
-                                <a href=""><i class="ti ti-brand-twitter"></i></a>
-                            </div>
-                            <div class="col">
-                                <a href=""><i class="ti ti-brand-facebook"></i></a>
-                            </div>
-                            <div class="col">
-                                <a href=""><i class="ti ti-brand-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div id="preloader"></div>
+    <div class="loader-container" id="preloader">
+        <span class="loader"></span>
+    </div>
     <a href="#hero" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="ti ti-arrow-up"></i></a>
-
 
     <?php
     include("components/scripts.php");
