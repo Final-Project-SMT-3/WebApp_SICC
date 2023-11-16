@@ -120,10 +120,10 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-lg-6 " data-aos="fade-right">
                         <p>SI CC adalah Sistem Informasi untuk mewadahi Mahasiswa Jurusan Teknologi Informasi
-                           Politeknik Negeri Jember yang ingin mengikuti perlombaan skala nasional seperti PKM,
-                           KMIPN, Gemastik dan Pilmapres. <br>
-                           Diharapkan dengan adanya wadah seperti SI CC, mahasiswa
-                           dapat menyalurkan prestasi akademiknya sesuai bidang lomba yang diikuti.</p>
+                            Politeknik Negeri Jember yang ingin mengikuti perlombaan skala nasional seperti PKM,
+                            KMIPN, Gemastik dan Pilmapres. <br>
+                            Diharapkan dengan adanya wadah seperti SI CC, mahasiswa
+                            dapat menyalurkan prestasi akademiknya sesuai bidang lomba yang diikuti.</p>
                     </div>
                     <div class="col-lg-6" data-aos="fade-left">
                         <img src="assets/landing_page/img/mockup.svg" class="img-fluid" alt="">
@@ -145,7 +145,8 @@
                             <div class="card-body">
                                 <h6 class="card-title">Program Kreativitas Mahasiswa (PKM)</h6>
                             </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -165,7 +166,8 @@
                                 <h6 class="card-title">Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan
                                     Komunikasi (Gemastik)</h6>
                             </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -174,7 +176,8 @@
                             <div class="card-body">
                                 <h6 class="card-title">Pemilihan Mahasiswa Berprestasi (Pilmapres)</h6>
                             </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a></div>
+                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -284,56 +287,9 @@
         </section>
     </main>
 
-    <footer id="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-5">
-                        <div class="footer-info">
-                            <img src="assets/landing_page/img/logo.svg" width="300px" alt="" class="img-fluid">
-                            <br><br><br>
-                            <p>Jl. Mastrip No.164, Lingkungan Panji, Tegalgede,<br>Kec.
-                                Sumbersari, Kabupaten Jember,<br>Jawa Timur 68121
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-4 footer-links">
-                        <h4 class="mb-4">Kontak</h4>
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <i class="ti ti-phone me-3" style="font-size: 30px;"></i> <a
-                                    href="https://wa.me/083115761027">+62
-                                    8311 5761 027</a>
-                            </div>
-                            <div class="col-12 d-flex align-items-center">
-                                <i class="ti ti-mail me-3" style="font-size: 30px;"></i> <a
-                                    href="#">rayasya.dziqi@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-3 footer-links2">
-                        <h4 class="mb-4">Ikuti Kita</h4>
-                        <div class="row">
-                            <div class="col">
-                                <a href=""><i class="ti ti-brand-instagram"></i></a>
-                            </div>
-                            <div class="col">
-                                <a href=""><i class="ti ti-brand-twitter"></i></a>
-                            </div>
-                            <div class="col">
-                                <a href=""><i class="ti ti-brand-facebook"></i></a>
-                            </div>
-                            <div class="col">
-                                <a href=""><i class="ti ti-brand-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php
+    include("components/footer.php");
+    ?>
 
     <div class="loader-container" id="preloader">
         <span class="loader"></span>
