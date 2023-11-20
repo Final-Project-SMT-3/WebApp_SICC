@@ -33,8 +33,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                     <form class="row" action="#" method="POST">
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Nama</label>
-                            <input type="email" class="form-control" id=""
-                                oninput="this.value = this.value.toUpperCase()">
+                            <input type="email" class="form-control" id="">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Tanggal Pelaksanaan</label>
