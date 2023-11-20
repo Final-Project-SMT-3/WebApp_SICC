@@ -118,4 +118,112 @@ class LombaModel{
             
         }
     }
+
+    public function insert($request = []){
+        $this->conn->beginTransaction();
+        try{
+            $nama = $request[0]['nama'] ?? null;
+            $foto = $request['foto'] ?? null;
+            $query = "INSERT INTO master_lomba(nama_lomba, foto, created_at) VALUES(:nama, :foto, now())";
+            $result = $this->conn->prepare($query);
+            $result->bindParam(':nama', $nama);
+            $result->bindParam(':foto', $foto);
+            $res = $result->execute();
+            if($res){
+                $this->conn->commit();
+                return [
+                    'status' => true
+                ];
+            }
+        } catch(Exception $e){
+            $this->conn->rollBack();
+            return [
+                'status' => false,
+                'error_message' => $e->getMessage()
+            ];
+        } catch(PDOException $e){
+            $this->conn->rollBack();
+            return [
+                'status' => false,
+                'error_message' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function getLomba($id){
+        try{
+            $query = "SELECT * FROM master_lomba WHERE id = $id";
+
+            $result = $this->conn->prepare($query);
+            $result->execute();
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $res = $result->fetchAll();
+            return $res;
+        } catch(Exception $e){
+
+        } catch(PDOException $e){
+            
+        }
+    }
+
+    public function update($request = []){
+        $this->conn->beginTransaction();
+        try{
+            $id = $request[0]['id'];
+            $nama = $request[0]['nama'] ?? null;
+            $deskripsi = $request[0]['deskripsi'] ?? null;
+            $foto = $request['foto'] ?? null;
+            $query = "UPDATE master_lomba SET nama_lomba = :nama, foto = :foto, deskripsi= :deskripsi WHERE id = $id";
+            $result = $this->conn->prepare($query);
+            $result->bindParam(':nama', $nama);
+            $result->bindParam(':deskripsi', $deskripsi);
+            $result->bindParam(':foto', $foto);
+            $res = $result->execute();
+            if($res){
+                $this->conn->commit();
+                return [
+                    'status' => true
+                ];
+            }
+        } catch(Exception $e){
+            $this->conn->rollBack();
+            return [
+                'status' => false,
+                'error_message' => $e->getMessage()
+            ];
+        } catch(PDOException $e){
+            $this->conn->rollBack();
+            return [
+                'status' => false,
+                'error_message' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function delete($id){
+        $this->conn->beginTransaction();
+        try{
+            $query = "DELETE FROM master_lomba WHERE id = $id";
+            $result = $this->conn->prepare($query);
+            $res = $result->execute();
+            if($res){
+                $this->conn->commit();
+                return [
+                    'status' => true
+                ];
+            }
+        } catch(Exception $e){
+            $this->conn->rollBack();
+            return [
+                'status' => false,
+                'error_message' => $e->getMessage()
+            ];
+        } catch(PDOException $e){
+            $this->conn->rollBack();
+            return [
+                'status' => false,
+                'error_message' => $e->getMessage()
+            ];
+        }
+    }
 }

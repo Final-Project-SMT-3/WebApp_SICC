@@ -38,48 +38,39 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                                 <th>Nomor</th>
                                 <th>Nama Lomba</th>
                                 <th>Deskripsi</th>
-                                <th>Tanggal Pelaksanaan</th>
                                 <th>Gambar</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>2011-04-25</td>
-                                <td><img class="img-fluid rounded-2" src="https://picsum.photos/237/" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>2011-07-25</td>
-                                <td><img class="img-fluid rounded-2" src="https://picsum.photos/237/" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Ashton Cox</td>
-                                <td>Junior Technical Author</td>
-                                <td>2009-01-12</td>
-                                <td><img class="img-fluid rounded-2" src="https://picsum.photos/237/" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Cedric Kelly</td>
-                                <td>Senior Javascript Developer</td>
-                                <td>2012-03-29</td>
-                                <td class="text-center rounded-2"><img class="img-fluid"
-                                        src="https://picsum.photos/237/" alt="">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Airi Satou</td>
-                                <td>Accountant</td>
-                                <td>2008-11-28</td>
-                                <td><img class="img-fluid rounded-2" src="https://picsum.photos/237/" alt=""></td>
-                            </tr>
+                            <?php
+                                if(count($data) > 0){
+                                    foreach($data as $key => $item){
+                                        ?>
+                                            <tr>
+                                                <td><?= $key + 1 ?></td>
+                                                <td><?= $item['nama_lomba'] ?></td>
+                                                <td><?= $item['deskripsi'] ?? '-' ?></td>
+                                                <td><img class="img-fluid rounded-2" src="https://picsum.photos/237/" alt=""></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning">
+                                                        <a href="/admin/MasterLomba/edit/<?= $item['id'] ?>">Edit</a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger">
+                                                        <a href="/admin/MasterLomba/delete/<?= $item['id'] ?>">Delete</a>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                    }
+                                } else {
+                                    ?>
+                                        <tr>
+                                            <td colspan="4">Belum ada data</td>
+                                        </tr>
+                                    <?php
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
