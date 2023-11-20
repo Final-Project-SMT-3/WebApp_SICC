@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/WebApp_SICC/public/assets/admin_page/components/head.php');
 ?>
 
 
@@ -10,7 +10,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 
     <!-- Sidebar Start -->
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/sidebar.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/WebApp_SICC/public/assets/admin_page/components/sidebar.php');
     ?>
     <!--  Sidebar End -->
 
@@ -19,7 +19,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 
         <!-- Header Start -->
         <?php
-        include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/header.php');
+        include($_SERVER['DOCUMENT_ROOT'] . '/WebApp_SICC/public/assets/admin_page/components/header.php');
         ?>
         <!-- Header End -->
 
@@ -65,5 +65,5 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/scripts.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/WebApp_SICC/public/assets/admin_page/components/scripts.php');
 ?>
