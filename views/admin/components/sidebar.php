@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/artikel" dataSelected="admin/artikel/add"
+                    <a class="sidebar-link" href="/admin/MasterArtikel" dataSelected="admin/artikel/add"
                         aria-expanded="false">
                         <span>
                             <i class="ti ti-news"></i>
@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/lomba" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/MasterLomba" aria-expanded="false">
                         <span>
                             <i class="ti ti-trophy"></i>
                         </span>
@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/faq" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/MasterFaq" aria-expanded="false">
                         <span>
                             <i class="ti ti-question-mark"></i>
                         </span>

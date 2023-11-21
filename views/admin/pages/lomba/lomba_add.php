@@ -33,8 +33,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                     <form class="row" action="/admin/MasterLomba/store" method="POST">
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="" name="nama"
-                                oninput="this.value = this.value.toUpperCase()">
+                            <input type="text" class="form-control" id="" name="nama">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Tanggal Pelaksanaan</label>

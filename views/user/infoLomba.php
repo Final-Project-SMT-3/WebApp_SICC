@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Competition Center</title>
-    <link href="assets/landing_page/vendor/aos/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/landing_page/css/styles.css">
+    <link href="/public/assets/landing_page/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/landing_page/css/styles.css">
 </head>
 
 <body style="background-color: #f2f2f2;">
     <nav class="navbar navbar-expand-lg fixed-top transparent" id="navbar">
         <div class="container-fluid mt-2 mb-2">
-            <a class="navbar-brand" href="#"><img src="assets/landing_page/img/logo.svg" alt="Logo SI CC" width="230px"
-                    class="img-fluid"></a>
+            <a class="navbar-brand" href="#"><img src="/public/assets/landing_page/img/logo.svg" alt="Logo SI CC"
+                    width="230px" class="img-fluid"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsCollapse"
                 aria-controls="navbarsCollapse" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
     <main id="main">
         <section id="heroLomba" class="section-lomba-hero">
             <div>
-                <img src="/assets/landing_page/img/heroLomba.png" height="500">
+                <img src="/public/assets/landing_page/img/heroLomba.png" height="500">
                 <h1 class="text-start text-white"><b>Program Kreativitas Mahasiswa <br>(PKM)</b></h1>
             </div>
         </section>
@@ -92,7 +92,7 @@
                                 <h4>Nama Tim</h4>
                             </div>
                             <div class="col-2 text-end">
-                                <a href="/assets/landing_page/img/404.png" download="Coba File"><i
+                                <a href="/public/assets/landing_page/img/404.png" download="Coba File"><i
                                         class="ti ti-download me-3"></i></a>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                 <h4>Nama Tim</h4>
                             </div>
                             <div class="col-2 text-end">
-                                <a href="/assets/landing_page/img/404.png" download="Coba File"><i
+                                <a href="/public/assets/landing_page/img/404.png" download="Coba File"><i
                                         class="ti ti-download me-3"></i></a>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                                 <h4>Nama Tim</h4>
                             </div>
                             <div class="col-2 text-end">
-                                <a href="/assets/landing_page/img/404.png" download="Coba File"><i
+                                <a href="/public/assets/landing_page/img/404.png" download="Coba File"><i
                                         class="ti ti-download me-3"></i></a>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                                 <h4>Nama Tim</h4>
                             </div>
                             <div class="col-2 text-end">
-                                <a href="/assets/landing_page/img/404.png" download="Coba File"><i
+                                <a href="/public/assets/landing_page/img/404.png" download="Coba File"><i
                                         class="ti ti-download me-3"></i></a>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                                 <h4>Nama Tim</h4>
                             </div>
                             <div class="col-2 text-end">
-                                <a href="/assets/landing_page/img/404.png" download="Coba File"><i
+                                <a href="/public/assets/landing_page/img/404.png" download="Coba File"><i
                                         class="ti ti-download me-3"></i></a>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
             <div class="row">
                 <div class="col-4">
                     <div class="card border border-0 border-light">
-                        <img src="assets/landing_page/img/card.png" class="card-img-top" alt="...">
+                        <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h6 class="card-title text-center">Title dokumentasi kegiatan</h6>
                         </div>
@@ -180,7 +180,7 @@
                 </div>
                 <div class="col-4">
                     <div class="card border border-0 border-light">
-                        <img src="assets/landing_page/img/card.png" class="card-img-top" alt="...">
+                        <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h6 class="card-title text-center">Title dokumentasi kegiatan</h6>
                         </div>
@@ -188,7 +188,7 @@
                 </div>
                 <div class="col-4">
                     <div class="card border border-0 border-light">
-                        <img src="assets/landing_page/img/card.png" class="card-img-top" alt="...">
+                        <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h6 class="card-title text-center">Title dokumentasi kegiatan</h6>
                         </div>

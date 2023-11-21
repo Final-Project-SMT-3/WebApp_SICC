@@ -124,10 +124,12 @@ class LombaModel{
         try{
             $nama = $request[0]['nama'] ?? null;
             $foto = $request['foto'] ?? null;
-            $query = "INSERT INTO master_lomba(nama_lomba, foto, created_at) VALUES(:nama, :foto, now())";
+            $deskripsi = $request[0]['deskripsi'] ?? null;
+            $query = "INSERT INTO master_lomba(nama_lomba, foto, deskripsi, created_at) VALUES(:nama, :foto, :deskripsi, now())";
             $result = $this->conn->prepare($query);
             $result->bindParam(':nama', $nama);
             $result->bindParam(':foto', $foto);
+            $result->bindParam(':deskripsi', $deskripsi);
             $res = $result->execute();
             if($res){
                 $this->conn->commit();
