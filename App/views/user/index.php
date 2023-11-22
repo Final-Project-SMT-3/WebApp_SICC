@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Competition Center</title>
-    <link href="/public/assets/landing_page/vendor/aos/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="/public/assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/assets/landing_page/css/styles.css">
+    <link href="assets/landing_page/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/landing_page/css/styles.css">
 </head>
 
 <body style="background-color: #f2f2f2;">
     <nav class="navbar navbar-expand-lg fixed-top transparent" id="navbar">
         <div class="container-fluid mt-2 mb-2">
-            <a class="navbar-brand" href="#"><img src="/public/assets/landing_page/img/logo.svg" alt="Logo SI CC"
-                    width="230px" class="img-fluid"></a>
+            <a class="navbar-brand" href="#"><img src="assets/landing_page/img/logo.svg" alt="Logo SI CC" width="230px"
+                    class="img-fluid"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsCollapse"
                 aria-controls="navbarsCollapse" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
                         <a class="nav-link scrollto" href="#faq">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/register"><button class="btn">Pendaftaran</button></a>
+                        <a href=""><button class="btn">Pendaftaran</button></a>
                     </li>
                 </ul>
             </div>
@@ -103,7 +103,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6 hero-img">
-                        <img src="/public/assets/landing_page/img/hero_img.png" alt="">
+                        <img src="assets/landing_page/img/hero_img.png" alt="">
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                             dapat menyalurkan prestasi akademiknya sesuai bidang lomba yang diikuti.</p>
                     </div>
                     <div class="col-lg-6" data-aos="fade-left">
-                        <img src="/public/assets/landing_page/img/mockup.svg" class="img-fluid" alt="">
+                        <img src="assets/landing_page/img/mockup.svg" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                 <div class="row">
                     <div class="col-3">
                         <div class="card">
-                            <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
+                            <img src="assets/landing_page/img/card.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h6 class="card-title">Program Kreativitas Mahasiswa (PKM)</h6>
                             </div>
@@ -151,7 +151,7 @@
                     </div>
                     <div class="col-3">
                         <div class="card">
-                            <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
+                            <img src="assets/landing_page/img/card.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h6 class="card-title">Kompetisi Mahasiswa Informatika Politeknik Nasional (KMIPN)</h6>
                             </div>
@@ -161,7 +161,7 @@
                     </div>
                     <div class="col-3">
                         <div class="card">
-                            <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
+                            <img src="assets/landing_page/img/card.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h6 class="card-title">Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan
                                     Komunikasi (Gemastik)</h6>
@@ -172,7 +172,7 @@
                     </div>
                     <div class="col-3">
                         <div class="card">
-                            <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
+                            <img src="assets/landing_page/img/card.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h6 class="card-title">Pemilihan Mahasiswa Berprestasi (Pilmapres)</h6>
                             </div>

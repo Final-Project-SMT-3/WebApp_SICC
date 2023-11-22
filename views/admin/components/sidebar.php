@@ -3,7 +3,7 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="#" class="text-nowrap logo-img">
-                <img src="/assets/admin_page/images/logos/logo_admin.svg" width="180" alt="" />
+                <img src="/public/assets/admin_page/images/logos/logo_admin.svg" width="180" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/artikel" dataSelected="admin/artikel/add"
+                    <a class="sidebar-link" href="/admin/MasterArtikel" dataSelected="admin/artikel/add"
                         aria-expanded="false">
                         <span>
                             <i class="ti ti-news"></i>
@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/lomba" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/MasterLomba" aria-expanded="false">
                         <span>
                             <i class="ti ti-trophy"></i>
                         </span>
@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/faq" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/MasterFaq" aria-expanded="false">
                         <span>
                             <i class="ti ti-question-mark"></i>
                         </span>

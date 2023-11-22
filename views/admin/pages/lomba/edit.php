@@ -27,13 +27,15 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title fw-semibold mb-4">Tambah Lomba</h5>
-                    <p class="mb-5">Ini adalah halaman untuk menambah Lomba</p>
+                    <h5 class="card-title fw-semibold mb-4">Edit Lomba</h5>
+                    <p class="mb-5">Ini adalah halaman untuk mengedit Lomba</p>
 
-                    <form class="row" action="/admin/MasterLomba/store" method="POST">
+                    <form class="row" action="/admin/MasterLomba/update" method="POST">
+                        <input type="hidden" name="id" value="<?=$data[0]['id']?>">
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="" name="nama">
+                            <input type="text" class="form-control" id="" name="nama" value="<?= $data[0]['nama_lomba'] ?>"
+                                oninput="this.value = this.value.toUpperCase()">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Tanggal Pelaksanaan</label>
@@ -41,7 +43,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                         </div>
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Deskripsi</label>
-                            <textarea name="deskripsi" id="" rows="1" class="form-control"></textarea>
+                            <textarea name="deskripsi" id="" rows="1" class="form-control"><?= $data[0]['deskripsi'] ?></textarea>
                         </div>
                         <div class="mb-3 col-md-3">
                             <label class="form-label">Gambar</label>

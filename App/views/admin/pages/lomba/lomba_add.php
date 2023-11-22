@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/WebApp_SICC/public/assets/admin_page/components/head.php');
 ?>
 
 
@@ -10,7 +10,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 
     <!-- Sidebar Start -->
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/sidebar.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/WebApp_SICC/public/assets/admin_page/components/sidebar.php');
     ?>
     <!--  Sidebar End -->
 
@@ -19,7 +19,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 
         <!-- Header Start -->
         <?php
-        include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/header.php');
+        include($_SERVER['DOCUMENT_ROOT'] . '/WebApp_SICC/public/assets/admin_page/components/header.php');
         ?>
         <!-- Header End -->
 
@@ -30,10 +30,10 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                     <h5 class="card-title fw-semibold mb-4">Tambah Lomba</h5>
                     <p class="mb-5">Ini adalah halaman untuk menambah Lomba</p>
 
-                    <form class="row" action="/admin/MasterLomba/store" method="POST">
+                    <form class="row" action="#" method="POST">
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="" name="nama">
+                            <input type="email" class="form-control" id="">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Tanggal Pelaksanaan</label>
@@ -41,7 +41,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                         </div>
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Deskripsi</label>
-                            <textarea name="deskripsi" id="" rows="1" class="form-control"></textarea>
+                            <textarea name="" id="" rows="1" class="form-control"></textarea>
                         </div>
                         <div class="mb-3 col-md-3">
                             <label class="form-label">Gambar</label>
@@ -65,5 +65,5 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/scripts.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/WebApp_SICC/public/assets/admin_page/components/scripts.php');
 ?>
