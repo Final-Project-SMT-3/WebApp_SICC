@@ -18,8 +18,6 @@ include("components/head.php");
                         <input name="password" type="email" class="input-field" required />
                         <label class="input-label">Email</label>
                     </div>
-                    <button type="submit" name="submit" class="btn">Proses</button>
-                    <p class="mt-2">Sudah ingat akunmu? Ayo <a href="register.php">Sign In</a></p>
                 </div>
             </form>
         </div>
