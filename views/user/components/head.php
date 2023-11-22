@@ -20,8 +20,8 @@ if (strpos($current_url, '/login') !== false) {
     <title>
         <?= $title; ?>
     </title>
-    <link rel="stylesheet" href="/assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/landing_page/css/styles.css">
+    <link rel="stylesheet" href="/public/assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/landing_page/css/styles.css">
 </head>
 
 <body>
