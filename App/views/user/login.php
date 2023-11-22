@@ -5,7 +5,7 @@ include("components/head.php");
 <div id="login" class="container-fluid">
     <div class="row vh-100">
         <div class="col-lg-6 d-flex justify-content-center align-items-center">
-            <form action="/admin" method="POST" class="card-form">
+            <form action="../admin/dashboard.php" method="POST" class="card-form">
                 <div class="title-forms">
                     <h3 class="title">Sign In</h3>
                     <div class="underline mb-4"></div>
@@ -28,7 +28,7 @@ include("components/head.php");
             </form>
         </div>
         <div class="col-lg-6 illustration d-flex justify-content-center align-items-center">
-            <img class="img-fluid" src="/public/assets/landing_page/img/illustration_login.png" alt="gambar login">
+            <img class="img-fluid" src="assets/landing_page/img/illustration_login.png" alt="gambar login">
         </div>
     </div>
 </div>

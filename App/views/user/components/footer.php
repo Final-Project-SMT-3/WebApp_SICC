@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-5">
                     <div class="footer-info">
-                        <img src="/public/assets/landing_page/img/logo.svg" width="300px" alt="" class="img-fluid">
+                        <img src="assets/landing_page/img/logo.svg" width="300px" alt="" class="img-fluid">
                         <br><br><br>
                         <p>Jl. Mastrip No.164, Lingkungan Panji, Tegalgede,<br>Kec.
                             Sumbersari, Kabupaten Jember,<br>Jawa Timur 68121
