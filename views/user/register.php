@@ -5,7 +5,8 @@ include("components/head.php");
 <div id="register" class="container-fluid">
     <div class="row vh-100">
         <div class="col-lg-6 illustration d-flex justify-content-center align-items-center">
-            <img class="img-fluid" src="assets/landing_page/img/illustration_register.png" alt="gambar register">
+            <img class="img-fluid" src="/public/assets/landing_page/img/illustration_register.png"
+                alt="gambar register">
         </div>
         <div class="col-lg-6 d-flex justify-content-center align-items-center">
             <form class="card-form">
