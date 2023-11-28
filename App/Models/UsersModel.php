@@ -156,4 +156,116 @@ class UsersModel{
             return json_encode($param);
         }
     }
+
+    public function cekEmail($request = []){
+        $param = new stdClass;
+        try{
+            $query = "SELECT count(*) FROM users where email = :email";
+            $result = $this->conn->prepare($query);
+            $result->bindParam(":email", $request['email']);
+            $result->execute();
+            $res = $result->fetchColumn();
+
+            $param->status = 'ok';
+            $param->email = $request['email'];
+            $param->result = $res;
+        } catch(Exception $e){
+            $param->status = 'error';
+            $param->error_message = $e->getMessage();
+        } catch(PDOException $e){
+            $param->status = 'error';
+            $param->error_message = $e->getMessage();
+        } finally{
+            return $param;
+        }
+    }
+
+    public function insertOTP($otp){
+        $this->conn->beginTransaction();
+        try{
+            $query = "INSERT INTO otp(kode, status) value('$otp', '1')";
+            $result = $this->conn->prepare($query);
+            $result->execute();
+            $this->conn->commit();
+        } catch(Exception $e){
+            echo json_encode($e);
+            $this->conn->rollBack();
+        } catch(PDOException $e){
+            echo json_encode($e);
+            $this->conn->rollBack();
+        }
+    }
+
+    public function cekOTP($request = []){
+        $param = new stdClass;
+        try{
+            $query = "SELECT count(*) FROM otp where kode = :otp and status = '1'";
+            $result = $this->conn->prepare($query);
+            $result->bindParam(":otp", $request['otp']);
+            $result->execute();
+            $res = $result->fetchColumn();
+
+            $param->status = 'ok';
+            $param->result = $res;
+        } catch(Exception $e){
+            $param->status = 'error';
+            $param->error_message = $e->getMessage();
+        } catch(PDOException $e){
+            $param->status = 'error';
+            $param->error_message = $e->getMessage();
+        } finally{
+            return $param;
+        }
+    }
+
+    public function deactiveOTP($otp){
+        $this->conn->beginTransaction();
+        try{
+            $query = "UPDATE otp SET status = '0' where kode = '$otp'";
+            $result = $this->conn->prepare($query);
+            $result->execute();
+            $this->conn->commit();
+        } catch(Exception $e){
+            echo $e->getMessage();
+            $this->conn->rollBack();
+            return $e->getMessage();
+        } catch(PDOException $e){
+            echo $e->getMessage();
+            $this->conn->rollBack();
+            return $e->getMessage();
+        }
+    }
+
+    public function resetPassword($request = []){
+        $this->conn->beginTransaction();
+        $param = new stdClass;
+        try{
+            $param->status_code = 200;
+
+            $password = md5(htmlspecialchars(trim($request['password'])));
+            $email = trim($request['email']);
+            $query = "UPDATE users set password = :pass where email = :email";
+            $result = $this->conn->prepare($query);
+            $result->bindParam(':pass', $password);
+            $result->bindParam(':email', $email);
+            $res = $result->execute();
+            if($res){
+                $this->conn->commit();
+                $param->message = 'Berhasil mengubah password';
+            } else {
+                $this->conn->rollBack();
+                $param->message = 'Terjadi kesalahan';
+            }
+        } catch(Exception $e){
+            $this->conn->rollBack();
+            $param->status_code = 500;
+            $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
+        } catch(PDOException $e){
+            $this->conn->rollBack();
+            $param->status_code = 500;
+            $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
+        } finally{
+            return $param;
+        }
+    }
 }
