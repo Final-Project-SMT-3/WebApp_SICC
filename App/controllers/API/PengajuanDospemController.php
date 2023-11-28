@@ -1,4 +1,6 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/App/Models/DospemModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/App/controllers/Controller.php';
 
 class PengajuanDospemController extends Controller{
     private $response;
@@ -7,7 +9,6 @@ class PengajuanDospemController extends Controller{
     public function __construct()
     {
         $this->response = new stdClass;
-        require_once '../App/Models/DospemModel.php';
         $this->model = new DospemModel;
     }
 

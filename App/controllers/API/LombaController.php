@@ -1,11 +1,12 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/App/Models/LombaModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/App/controllers/Controller.php';
 
 class LombaController extends Controller{
     private $model;
 
     public function __construct()
     {
-        require_once '../App/Models/LombaModel.php';
         $this->model = new LombaModel;
     }
 
