@@ -60,7 +60,7 @@ p {
   --putih: #ffffff;
   --abuabu-gelap: #d9d9d9;
 }
-
+/*----------- User Auth Page -----------*/
 /*--------------------------------------------------------------
 # Login & Register
 --------------------------------------------------------------*/
@@ -144,15 +144,35 @@ input {
 }
 
 /*--------------------------------------------------------------
-# Illustration Login
+# Illustration Login & Register
 --------------------------------------------------------------*/
 .illustration {
   background: url("../img/Illustration_bg.png");
   background-size: cover;
 }
+.illustration-daftar {
+  background: url("../img/Illustration_bg_progress.png");
+  background-size: cover;
+}
 @media (max-width: 768px) {
   div.illustration {
     display: none !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Daftar Lomba 
+--------------------------------------------------------------*/
+
+.tab {
+  display: none;
+  opacity: 0;
+  animation: fadeInOut 0.5s ease forwards;
+}
+
+@keyframes fadeInOut {
+  to {
+    opacity: 1;
   }
 }
 

@@ -1,22 +1,24 @@
 <?php
 
-class LombaModel{
+class LombaModel
+{
     private $param;
     private $conn;
     private $statement;
 
     public function __construct()
     {
-        try{
+        try {
             $this->conn = new PDO('mysql:host=localhost;dbname=db_cc', 'root', '');
             $this->param = new stdClass;
-        } catch(PDOException $e){
+        } catch (PDOException $e) {
             die($e->getMessage());
         }
     }
 
-    public function getAllData($request = []){
-        try{
+    public function getAllData($request = [])
+    {
+        try {
             // $query = "SELECT master_lomba.nama_lomba, pelaksanaan_lomba.*, detail_pelaksanaan_lomba.tanggal_mulai, detail_pelaksanaan_lomba.tanggal_akhir, detail_pelaksanaan_lomba.status FROM pelaksanaan_lomba JOIN detail_pelaksanaan_lomba ON detail_pelaksanaan_lomba.id_pelaksanaan_lomba = pelaksanaan_lomba.id JOIN master_lomba ON master_lomba.id = pelaksanaan_lomba.id_mst_lomba";
             $query = "SELECT * FROM master_lomba";
 
@@ -24,23 +26,23 @@ class LombaModel{
             $result->execute();
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $res = $result->fetchAll();
-            if($res){
-                foreach($res as $i => $item){
+            if ($res) {
+                foreach ($res as $i => $item) {
                     $queryDetail = "SELECT * FROM master_detail_lomba WHERE id_mst_lomba = " . $item['id'];
                     $resultDetail = $this->conn->prepare($queryDetail);
                     $resultDetail->execute();
                     $resultDetail->setFetchMode(PDO::FETCH_ASSOC);
                     $resDetail = $resultDetail->fetchAll();
-                    if($resDetail){
+                    if ($resDetail) {
                         $res[$i]['detailLomba'] = $resDetail;
                     }
-                    
+
                     $queryPelaksanaan = "SELECT * FROM pelaksanaan_lomba WHERE id_mst_lomba = " . $item['id'];
                     $resultPelaksanaan = $this->conn->prepare($queryPelaksanaan);
                     $resultPelaksanaan->execute();
                     $resultPelaksanaan->setFetchMode(PDO::FETCH_ASSOC);
                     $resPelaksanaan = $resultPelaksanaan->fetchAll();
-                    if($resPelaksanaan){
+                    if ($resPelaksanaan) {
                         $res[$i]['detailPelaksanaan'] = $resPelaksanaan;
                     }
                 }
@@ -48,31 +50,31 @@ class LombaModel{
                 $this->param->status_code = 200;
                 $this->param->message = 'Success';
                 $this->param->response = $res;
-            } else{
+            } else {
                 $this->param->status_code = 200;
                 $this->param->message = 'Data tidak ditemukan';
                 $this->param->response = '';
             }
-        }  catch(Exception $e){
+        } catch (Exception $e) {
             $this->param->status_code = 500;
             $this->param->message = 'Terjadi kesalahan. ' . $e->getMessage();
             $this->param->response = '';
-        } catch(PDOException $e){
+        } catch (PDOException $e) {
             $this->param->status_code = 500;
             $this->param->message = 'Terjadi kesalahan. ' . $e->getMessage();
             $this->param->response = '';
-        }
-        finally{
+        } finally {
             return $this->param;
         }
     }
 
-    public function getRequestedData($request = []){
+    public function getRequestedData($request = [])
+    {
         $param = new stdClass();
 
         $id_detail_lomba = htmlspecialchars(trim($request['id_lomba']));
 
-        try{
+        try {
             $query = "SELECT master_lomba.nama_lomba, master_detail_lomba.foto, master_detail_lomba.detail_lomba, pelaksanaan_lomba.tanggal, pelaksanaan_lomba.info, detail_pelaksanaan_lomba.status, detail_pelaksanaan_lomba.tanggal_mulai, detail_pelaksanaan_lomba.tanggal_akhir FROM pelaksanaan_lomba JOIN detail_pelaksanaan_lomba ON detail_pelaksanaan_lomba.id_pelaksanaan_lomba = pelaksanaan_lomba.id JOIN master_lomba ON master_lomba.id = pelaksanaan_lomba.id_mst_lomba JOIN master_detail_lomba on master_detail_lomba.id_mst_lomba = master_lomba.id where master_detail_lomba.id = :id";
 
             $result = $this->conn->prepare($query);
@@ -81,96 +83,119 @@ class LombaModel{
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $res = $result->fetchAll();
 
-            if($res){
+            if ($res) {
                 $param->status_code = 200;
                 $param->message = 'Success';
                 $param->response = $res[0];
-            } else{
+            } else {
                 $param->status_code = 200;
                 $param->message = 'Data tidak ditemukan';
                 $param->response = '';
             }
-        } catch(Exception $e){
+        } catch (Exception $e) {
             $param->status_code = 500;
             $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
-            $param->response = '';           
-        } catch(PDOException $e){
+            $param->response = '';
+        } catch (PDOException $e) {
             $param->status_code = 500;
             $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
-            $param->response = '';           
-        } finally{
+            $param->response = '';
+        } finally {
             return json_encode($param);
         }
     }
 
-    public function getAllLomba(){
-        try{
-            $query = "SELECT * FROM master_lomba";
+    public function getAllLomba()
+    {
+        try {
+            $query = "SELECT master_lomba.id, nama_lomba, detail_lomba, foto FROM master_lomba JOIN master_detail_lomba ON master_lomba.id = master_detail_lomba.id_mst_lomba";
 
             $result = $this->conn->prepare($query);
             $result->execute();
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $res = $result->fetchAll();
             return $res;
-        } catch(Exception $e){
+        } catch (Exception $e) {
 
-        } catch(PDOException $e){
-            
+        } catch (PDOException $e) {
+
         }
     }
 
-    public function insert($request = []){
-        $this->conn->beginTransaction();
-        try{
+    public function insert($request = [])
+    {
+        try {
             $nama = $request[0]['nama'] ?? null;
             $foto = $request['foto'] ?? null;
             $deskripsi = $request[0]['deskripsi'] ?? null;
-            $query = "INSERT INTO master_lomba(nama_lomba, foto, deskripsi, created_at) VALUES(:nama, :foto, :deskripsi, now())";
-            $result = $this->conn->prepare($query);
-            $result->bindParam(':nama', $nama);
-            $result->bindParam(':foto', $foto);
-            $result->bindParam(':deskripsi', $deskripsi);
-            $res = $result->execute();
-            if($res){
-                $this->conn->commit();
-                return [
-                    'status' => true
-                ];
+
+            // Memulai transaksi
+            $this->conn->beginTransaction();
+
+            // Insert master lomba
+            $queryInsertMaster = "INSERT INTO master_lomba(nama_lomba) VALUES(:nama)";
+            $resultInsertMaster = $this->conn->prepare($queryInsertMaster);
+            $resultInsertMaster->bindParam(':nama', $nama);
+            $res1 = $resultInsertMaster->execute();
+
+            if ($res1) {
+                // Mendapatkan ID terakhir yang di-generate dari operasi INSERT sebelumnya
+                $lastinsertedId = $this->conn->lastInsertId();
+
+                // Insert detail lomba dengan ID yang didapatkan sebelumnya
+                $queryInsertDetail = "INSERT INTO master_detail_lomba(id_mst_lomba, detail_lomba, created_at) VALUES(:idLomba, :detail_lomba, now())";
+                $resultInsertDetail = $this->conn->prepare($queryInsertDetail);
+                $resultInsertDetail->bindParam(':idLomba', $lastinsertedId);
+                $resultInsertDetail->bindParam(':detail_lomba', $deskripsi);
+                $res2 = $resultInsertDetail->execute();
+
+                if ($res2) {
+                    // Commit transaksi jika kedua operasi INSERT berhasil
+                    $this->conn->commit();
+                    return [
+                        'status' => true
+                    ];
+                }
             }
-        } catch(Exception $e){
+
+            // Rollback transaksi jika ada operasi INSERT yang gagal
             $this->conn->rollBack();
             return [
                 'status' => false,
-                'error_message' => $e->getMessage()
+                'error_message' => 'Gagal melakukan operasi INSERT'
             ];
-        } catch(PDOException $e){
+        } catch (Exception $e) {
+            // Rollback transaksi dan tangani exception
             $this->conn->rollBack();
             return [
                 'status' => false,
                 'error_message' => $e->getMessage()
             ];
         }
+
     }
 
-    public function getLomba($id){
-        try{
-            $query = "SELECT * FROM master_lomba WHERE id = $id";
+    public function getLomba($id)
+    {
+        try {
+            $query = "SELECT master_lomba.id, nama_lomba, detail_lomba, foto FROM master_lomba JOIN master_detail_lomba ON master_lomba.id = master_detail_lomba.id_mst_lomba WHERE master_lomba.id = $id";
 
             $result = $this->conn->prepare($query);
             $result->execute();
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $res = $result->fetchAll();
             return $res;
-        } catch(Exception $e){
+        } catch (Exception $e) {
 
-        } catch(PDOException $e){
-            
+        } catch (PDOException $e) {
+
         }
     }
 
-    public function update($request = []){
+    public function update($request = [])
+    {
         $this->conn->beginTransaction();
-        try{
+        try {
             $id = $request[0]['id'];
             $nama = $request[0]['nama'] ?? null;
             $deskripsi = $request[0]['deskripsi'] ?? null;
@@ -181,19 +206,19 @@ class LombaModel{
             $result->bindParam(':deskripsi', $deskripsi);
             $result->bindParam(':foto', $foto);
             $res = $result->execute();
-            if($res){
+            if ($res) {
                 $this->conn->commit();
                 return [
                     'status' => true
                 ];
             }
-        } catch(Exception $e){
+        } catch (Exception $e) {
             $this->conn->rollBack();
             return [
                 'status' => false,
                 'error_message' => $e->getMessage()
             ];
-        } catch(PDOException $e){
+        } catch (PDOException $e) {
             $this->conn->rollBack();
             return [
                 'status' => false,
@@ -202,25 +227,26 @@ class LombaModel{
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $this->conn->beginTransaction();
-        try{
+        try {
             $query = "DELETE FROM master_lomba WHERE id = $id";
             $result = $this->conn->prepare($query);
             $res = $result->execute();
-            if($res){
+            if ($res) {
                 $this->conn->commit();
                 return [
                     'status' => true
                 ];
             }
-        } catch(Exception $e){
+        } catch (Exception $e) {
             $this->conn->rollBack();
             return [
                 'status' => false,
                 'error_message' => $e->getMessage()
             ];
-        } catch(PDOException $e){
+        } catch (PDOException $e) {
             $this->conn->rollBack();
             return [
                 'status' => false,

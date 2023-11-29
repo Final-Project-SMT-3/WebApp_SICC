@@ -7,5 +7,9 @@ class RegisterController extends Controller
     {
         $this->view('user/register');
     }
+    public function store()
+    {
+
+    }
 }
 ?>

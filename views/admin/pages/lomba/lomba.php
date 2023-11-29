@@ -32,7 +32,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                         <p>Ini adalah halaman untuk mengatur Lomba</p>
                         <a href="/admin/MasterLomba/create"><button class="btn btn-primary">Tambah Lomba</button></a>
                     </div>
-                    <table id="<?php count($data) > 0 ? 'dataTables' : ''; ?>" class="table table-hover"
+                    <table id="<?= count($data) > 0 ? 'dataTables' : '' ?>" class="table table-hover"
                         style="width:100%">
                         <thead>
                             <tr>
@@ -56,16 +56,21 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                                             <?= $item['nama_lomba'] ?>
                                         </td>
                                         <td>
-                                            <?= $item['deskripsi'] ?? '-' ?>
+                                            <?= $item['detail_lomba'] ?? '-' ?>
                                         </td>
                                         <td><img class="img-fluid rounded-2" src="https://picsum.photos/237/" alt=""></td>
                                         <td>
-                                            <button type="button" class="btn btn-warning">
-                                                <a href="/admin/MasterLomba/edit/<?= $item['id'] ?>">Edit</a>
-                                            </button>
-                                            <button type="button" class="btn btn-danger">
-                                                <a href="/admin/MasterLomba/delete/<?= $item['id'] ?>">Delete</a>
-                                            </button>
+                                            <div class="d-flex justify-content-between">
+                                                <button type="button" class="btn btn-warning m-1">
+                                                    <a class="text-white" href="/admin/MasterLomba/edit/<?= $item['id'] ?>"><i
+                                                            class="ti ti-pencil"></i></a>
+                                                </button>
+                                                <button type="button" class="btn btn-danger m-1">
+                                                    <a class="text-white" href="/admin/MasterLomba/delete/<?= $item['id'] ?>"><i
+                                                            class="ti ti-trash"></i></a>
+                                                </button>
+                                            </div>
+
                                         </td>
                                     </tr>
                                     <?php
