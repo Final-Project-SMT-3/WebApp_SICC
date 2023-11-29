@@ -20,14 +20,14 @@ class LombaController extends Controller{
                 }
             } else{
                 $response = new stdClass;
-                $response->code = 403;
+                $response->status_code = 403;
                 $response->message = 'Access Forbidden.';
 
                 echo json_encode($response);
             }
         } else{
             $response = new stdClass;
-            $response->code = 403;
+            $response->status_code = 403;
             $response->message = 'Access Forbidden.';
 
             echo json_encode($response);
@@ -40,14 +40,14 @@ class LombaController extends Controller{
                 echo $this->model->getRequestedData($_POST);
             } else{
                 $response = new stdClass;
-                $response->code = 403;
+                $response->status_code = 403;
                 $response->message = 'Access Forbidden.';
 
                 echo json_encode($response);
             }
         } else{
             $response = new stdClass;
-            $response->code = 403;
+            $response->status_code = 403;
             $response->message = 'Access Forbidden.';
 
             echo json_encode($response);

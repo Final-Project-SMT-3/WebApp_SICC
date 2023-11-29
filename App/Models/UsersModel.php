@@ -109,29 +109,29 @@ class UsersModel{
                 $resKelompok = $resultKelompok->execute();
                 $this->conn->commit();
                 if($resKelompok){
-                    $param->status = 200;
+                    $param->status_code = 200;
                     $param->message = 'Success';
                     $param->response = 'Berhasil menambahkan kelompok baru.';
                 } else{
                     $this->conn->rollBack();
-                    $param->status = 500;
+                    $param->status_code = 500;
                     $param->message = 'Terjadi kesalahan.';
                     $param->response = '';
                 }
             } else{
                 $this->conn->rollBack();
-                $param->status = 500;
+                $param->status_code = 500;
                 $param->message = 'Terjadi kesalahan.';
                 $param->response = '';
             }
         } catch(Exception $e){
             $this->conn->rollBack();
-            $param->status = 500;
+            $param->status_code = 500;
             $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
             $param->response = null;
         } catch(PDOException $e){
             $this->conn->rollBack();
-            $param->status = 500;
+            $param->status_code = 500;
             $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
             $param->response = null;
         } finally {
@@ -148,14 +148,14 @@ class UsersModel{
             $result->execute();
             $res = $result->fetchColumn();
 
-            $param->status = 'ok';
+            $param->status_code = 'ok';
             $param->email = $request['email'];
             $param->result = $res;
         } catch(Exception $e){
-            $param->status = 'error';
+            $param->status_code = 'error';
             $param->error_message = $e->getMessage();
         } catch(PDOException $e){
-            $param->status = 'error';
+            $param->status_code = 'error';
             $param->error_message = $e->getMessage();
         } finally{
             return $param;
@@ -187,13 +187,13 @@ class UsersModel{
             $result->execute();
             $res = $result->fetchColumn();
 
-            $param->status = 'ok';
+            $param->status_code = 'ok';
             $param->result = $res;
         } catch(Exception $e){
-            $param->status = 'error';
+            $param->status_code = 'error';
             $param->error_message = $e->getMessage();
         } catch(PDOException $e){
-            $param->status = 'error';
+            $param->status_code = 'error';
             $param->error_message = $e->getMessage();
         } finally{
             return $param;

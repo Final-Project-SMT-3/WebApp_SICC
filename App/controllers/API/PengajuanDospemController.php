@@ -17,13 +17,13 @@ class PengajuanDospemController extends Controller{
             if($_SERVER['HTTP_HTTP_TOKEN'] == $this->getToken()){
                 echo json_encode($this->model->getDospem());
             } else{
-                $this->response->code = 403;
+                $this->response->status_code = 403;
                 $this->response->message = 'Access Forbidden.';
 
                 echo json_encode($this->response);
             }
         } else{
-            $this->response->code = 403;
+            $this->response->status_code = 403;
             $this->response->message = 'Access Forbidden.';
 
             echo json_encode($this->response);
@@ -36,14 +36,14 @@ class PengajuanDospemController extends Controller{
                 echo $this->model->getDetailDospem($_POST);
             } else{
                 $response = new stdClass;
-                $response->code = 403;
+                $response->status_code = 403;
                 $response->message = 'Access Forbidden.';
 
                 echo json_encode($response);
             }
         } else{
             $response = new stdClass;
-            $response->code = 403;
+            $response->status_code = 403;
             $response->message = 'Access Forbidden.';
 
             echo json_encode($response);
@@ -55,13 +55,13 @@ class PengajuanDospemController extends Controller{
             if($_SERVER['HTTP_HTTP_TOKEN'] == $this->getToken()){
                 echo json_encode($this->model->pengajuanDospem($_POST));
             } else{
-                $this->response->code = 403;
+                $this->response->status_code = 403;
                 $this->response->message = 'Access Forbidden.';
 
                 echo json_encode($this->response);
             }
         } else{
-            $this->response->code = 403;
+            $this->response->status_code = 403;
             $this->response->message = 'Access Forbidden.';
 
             echo json_encode($this->response);

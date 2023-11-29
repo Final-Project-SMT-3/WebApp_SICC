@@ -66,7 +66,7 @@ class UsersController extends Controller{
                         return $this->sendEmail($cekEmail->email);
                     else{
                         $response = new stdClass;
-                        $response->code = 200;
+                        $response->status_code = 200;
                         $response->message ='Email tidak dapat ditemukan.';
 
                         echo json_encode($response);
@@ -75,14 +75,14 @@ class UsersController extends Controller{
                     echo json_encode($cekEmail);
             } else{
                 $response = new stdClass;
-                $response->code = 403;
+                $response->status_code = 403;
                 $response->message = 'Access Forbidden.';
 
                 echo json_encode($response);
             }
         } else{
             $response = new stdClass;
-            $response->code = 403;
+            $response->status_code = 403;
             $response->message = 'Access Forbidden.';
 
             echo json_encode($response);
@@ -118,7 +118,7 @@ class UsersController extends Controller{
             if($_SERVER['HTTP_HTTP_TOKEN'] == $this->getToken()){
                 $cekOTP = $this->model->cekOTP($_POST);
                 if($cekOTP->status == 'ok'){
-                    $response->code = 200;
+                    $response->status_code = 200;
                     if($cekOTP->result > 0){
                         $this->model->deactiveOTP($_POST['otp']);
                         $response->message ='OTP berhasil ditemukan';
@@ -132,14 +132,14 @@ class UsersController extends Controller{
                 echo json_encode($response);
             } else{
                 $response = new stdClass;
-                $response->code = 403;
+                $response->status_code = 403;
                 $response->message = 'Access Forbidden.';
 
                 echo json_encode($response);
             }
         } else{
             $response = new stdClass;
-            $response->code = 403;
+            $response->status_code = 403;
             $response->message = 'Access Forbidden.';
 
             echo json_encode($response);
@@ -152,14 +152,14 @@ class UsersController extends Controller{
                 echo json_encode($this->model->resetPassword($_POST));
             } else{
                 $response = new stdClass;
-                $response->code = 403;
+                $response->status_code = 403;
                 $response->message = 'Access Forbidden.';
 
                 echo json_encode($response);
             }
         } else{
             $response = new stdClass;
-            $response->code = 403;
+            $response->status_code = 403;
             $response->message = 'Access Forbidden.';
 
             echo json_encode($response);
@@ -172,14 +172,14 @@ class UsersController extends Controller{
                 echo $this->model->getDataUser($_POST);
             } else{
                 $response = new stdClass;
-                $response->code = 403;
+                $response->status_code = 403;
                 $response->message = 'Access Forbidden.';
 
                 echo json_encode($response);
             }
         } else{
             $response = new stdClass;
-            $response->code = 403;
+            $response->status_code = 403;
             $response->message = 'Access Forbidden.';
 
             echo json_encode($response);
