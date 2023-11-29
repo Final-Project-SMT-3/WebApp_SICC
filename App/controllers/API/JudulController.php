@@ -29,7 +29,7 @@ class JudulController extends Controller {
     public function pengajuanRevisiJudul() {
         if (isset($_SERVER['HTTP_HTTP_TOKEN'])) {
             if ($_SERVER['HTTP_HTTP_TOKEN'] == $this->getToken()) {
-                echo json_encode($this->model->pengajuaRevisiJudul($_POST));
+                echo json_encode($this->model->pengajuanRevisiJudul($_POST));
             } else {
                 $response = new stdClass;
                 $response->status_code = 403;

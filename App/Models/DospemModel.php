@@ -95,7 +95,7 @@ class DospemModel{
             if($res){
                 $this->param->status_code = 200;
                 $this->param->message = 'Success';
-                $this->param->response = 'Berhasil menambahkan data pengajuan dosen pembimbing baru.';
+                $this->param->response = 'Berhasil Mengajuan Permohonan Dosen Pembimbing';
             } else {
                 $this->conn->rollBack();
                 $this->param->status_code = 500;

@@ -18,7 +18,7 @@ class JudulModel {
         try {
             $query = "SELECT us.id as id_user, us.no_identitas, us.nama, k.nama_kelompok, pd.id as id_dospem,
                         dospem.nama AS nama_dospem, master_lomba.nama_lomba, pd.status AS status_dospem, sj.status AS status_judul, 
-                        sj.judul, sj.review, sj.submit_date
+                        sj.id AS id_pengajuan_judul, sj.judul, sj.review, sj.submit_date
                         FROM users AS us 
                         JOIN kelompok AS k ON us.id = k.id_mhs 
                         LEFT JOIN pemilihan_dospem AS pd ON pd.id_mhs = us.id
@@ -76,7 +76,7 @@ class JudulModel {
             if($res){
                 $param->status_code = 200;
                 $param->message = 'Success';
-                $param->response = 'Berhasil Mengajukan Judul Ke Dosen Pembimbing.';
+                $param->response = 'Berhasil Mengajukan Judul';
             } else {
                 $this->conn->rollBack();
                 $param->status_code = 500;
@@ -98,16 +98,16 @@ class JudulModel {
         }
     }
 
-    public function pengajuaRevisiJudul($request = []) {
+    public function pengajuanRevisiJudul($request = []) {
         $param = new stdClass;
-        $id_dospem = htmlspecialchars(trim($request['id_dospem']));
+        $id_pengajuan = htmlspecialchars(trim($request['id_pj']));
         $txt_judul = htmlspecialchars($request['judul']);
         
         $this->conn->beginTransaction();
         try {
-            $query = "UPDATE submit_judul SET judul = :judul, status = 'Waiting Approval', submit_date = now(), updated_at = now() WHERE id_dospem = :id_dospem";
+            $query = "UPDATE submit_judul SET judul = :judul, status = 'Waiting Approval', submit_date = now(), updated_at = now() WHERE id = :id_pj";
             $result = $this->conn->prepare($query);
-            $result->bindParam(':id_dospem', $id_dospem);
+            $result->bindParam(':id_pj', $id_pengajuan);
             $result->bindParam(':judul', $txt_judul);
             $res = $result->execute();
             $this->conn->commit();
@@ -115,7 +115,7 @@ class JudulModel {
             if($res){
                 $param->status_code = 200;
                 $param->message = 'Success';
-                $param->response = 'Berhasil Mengajukan Revisi Judul Ke Dosen Pembimbing.';
+                $param->response = 'Berhasil Mengajukan Revisi Judul';
             } else {
                 $this->conn->rollBack();
                 $param->status_code = 500;
