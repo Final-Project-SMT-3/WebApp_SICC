@@ -35,30 +35,35 @@ class UsersModel{
                         LEFT JOIN users as dospem on dospem.id = pd.id_dosen 
                         JOIN master_detail_lomba as detail_lomba ON detail_lomba.id = k.id_detail_lomba 
                         JOIN master_lomba on master_lomba.id = detail_lomba.id_mst_lomba 
-                        WHERE us.password = :pass AND us.username = :user 
+                        WHERE us.username = :user 
                         AND pd.created_at = (
                             SELECT MAX(created_at) FROM pemilihan_dospem
                         )
                         LIMIT 1";
     
             $result = $this->conn->prepare($query);
-            $result->bindParam(":pass", $password);
             $result->bindParam(":user", $username);
             $result->execute();
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $res = $result->fetchAll();
     
             if ($res) {
-                $param->status_code = 200;
-                $param->message = 'Success';
-    
-                if (isset($res[0]['status'])) {
-                    $param->status = $res[0]['status'];
+                if (password_verify($password, $res[0]['password'])) {
+                    $param->status_code = 200;
+                    $param->message = 'Success';
+
+                    if (isset($res[0]['status'])) {
+                        $param->status = $res[0]['status'];
+                    } else {
+                        $param->status = "Belum Memilih Dosen Pembimbing.";
+                    }
+
+                    $param->response = $res[0];
                 } else {
-                    $param->status = "Belum Memilih Dosen Pembimbing.";
-                }
-    
-                $param->response = $res[0];
+                    $param->status_code = 401; 
+                    $param->message = 'Username / Password Salah!';
+                    $param->response = '';
+                }                
             } else {
                 $param->status_code = 200;
                 $param->message = 'Data tidak ditemukan.';
@@ -148,14 +153,14 @@ class UsersModel{
             $result->execute();
             $res = $result->fetchColumn();
 
-            $param->status_code = 'ok';
+            $param->status_code = 200;
             $param->email = $request['email'];
             $param->result = $res;
         } catch(Exception $e){
-            $param->status_code = 'error';
+            $param->status_code = 500;
             $param->error_message = $e->getMessage();
         } catch(PDOException $e){
-            $param->status_code = 'error';
+            $param->status_code = 500;
             $param->error_message = $e->getMessage();
         } finally{
             return $param;
@@ -187,13 +192,13 @@ class UsersModel{
             $result->execute();
             $res = $result->fetchColumn();
 
-            $param->status_code = 'ok';
+            $param->status_code = 200;
             $param->result = $res;
         } catch(Exception $e){
-            $param->status_code = 'error';
+            $param->status_code = 500;
             $param->error_message = $e->getMessage();
         } catch(PDOException $e){
-            $param->status_code = 'error';
+            $param->status_code = 500;
             $param->error_message = $e->getMessage();
         } finally{
             return $param;
@@ -224,16 +229,21 @@ class UsersModel{
         try{
             $param->status_code = 200;
 
-            $password = md5(htmlspecialchars(trim($request['password'])));
+            $password = htmlspecialchars(trim($request['password']));
             $email = trim($request['email']);
-            $query = "UPDATE users set password = :pass where email = :email";
+    
+            // Hash the password using bcrypt
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+            $query = "UPDATE users SET password = :pass, updated_at = now() WHERE email = :email";
             $result = $this->conn->prepare($query);
-            $result->bindParam(':pass', $password);
+            $result->bindParam(':pass', $hashedPassword);
             $result->bindParam(':email', $email);
             $res = $result->execute();
+
             if($res){
                 $this->conn->commit();
-                $param->message = 'Berhasil mengubah password';
+                $param->message = 'Success';
             } else {
                 $this->conn->rollBack();
                 $param->message = 'Terjadi kesalahan';

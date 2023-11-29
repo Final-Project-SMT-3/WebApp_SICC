@@ -10,13 +10,13 @@ class Controller{
         return $this->token;
     }
 
-    public function generateRandomString($length = 10) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
+    public function generateRandomNumber($length = 4) {
+        $numbers = '0123456789';
+        $numbersLength = strlen($numbers);
+        $randomNumber = '';
         for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+            $randomNumber .= $numbers[random_int(0, $numbersLength - 1)];
         }
-        return $randomString;
+        return $randomNumber;
     }
 }

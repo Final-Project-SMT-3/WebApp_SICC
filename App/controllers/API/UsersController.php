@@ -61,13 +61,19 @@ class UsersController extends Controller{
         if(isset($_SERVER['HTTP_HTTP_TOKEN'])){
             if($_SERVER['HTTP_HTTP_TOKEN'] == $this->getToken()){
                 $cekEmail = $this->model->cekEmail($_POST);
-                if($cekEmail->status == 'ok'){
-                    if($cekEmail->result > 0)             
-                        return $this->sendEmail($cekEmail->email);
-                    else{
+                if($cekEmail->status_code == 200){
+                    if ($cekEmail->result > 0) {
                         $response = new stdClass;
                         $response->status_code = 200;
-                        $response->message ='Email tidak dapat ditemukan.';
+                        $response->message ='Success';
+
+                        echo json_encode($response);
+
+                        return $this->sendEmail($cekEmail->email);
+                    } else{
+                        $response = new stdClass;
+                        $response->status_code = 200;
+                        $response->message ='Email Tidak Dapat Ditemukan';
 
                         echo json_encode($response);
                     }
@@ -103,7 +109,7 @@ class UsersController extends Controller{
         $mail->setFrom('abhiemsmile@gmail.com');
         $mail->addAddress($email);
 
-        $otp = $this->generateRandomString(4);
+        $otp = $this->generateRandomNumber(4);
         $mail->isHTML(true);
         $mail->Subject = 'Lupa Password OTP';
         $mail->Body = $otp;
@@ -117,14 +123,14 @@ class UsersController extends Controller{
         if(isset($_SERVER['HTTP_HTTP_TOKEN'])){
             if($_SERVER['HTTP_HTTP_TOKEN'] == $this->getToken()){
                 $cekOTP = $this->model->cekOTP($_POST);
-                if($cekOTP->status == 'ok'){
+                if($cekOTP->status_code == 200){
                     $response->status_code = 200;
                     if($cekOTP->result > 0){
                         $this->model->deactiveOTP($_POST['otp']);
-                        $response->message ='OTP berhasil ditemukan';
+                        $response->message ='Success';
                     }
                     else{
-                        $response->message ='OTP tidak dapat ditemukan.';
+                        $response->message ='OTP Tidak Dapat Di Temukan.';
                     }
                 } else{
                     echo json_encode($cekOTP);
