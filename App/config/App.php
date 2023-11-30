@@ -48,12 +48,29 @@ class App
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
 
+        } else if ($url[1] == 'verified') {
+            $this->view('user/verified');
         } else if ($url[1] == 'login') {
             // FOR NON API CONTROLLER
-            $this->controller = 'LoginController';
+            $methodName = $url[2] ?? 'index';
+            // FOR NON API CONTROLLER
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $url[1] . "Controller.php")) {
+                $this->controller = 'LoginController';
+                unset($url[1]);
+            }
+
+            // GET Controller
             require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
             $this->controller = new $this->controller;
-            $this->method = 'index';
+
+            if (isset($url[2])) {
+                if (method_exists($this->controller, $methodName)) {
+                    $this->method = $methodName;
+                    unset($url[2]);
+                }
+            } else {
+                $this->method = 'index';
+            }
 
             // Parsing parameter
             if (!empty($url)) {
@@ -146,7 +163,10 @@ class App
         } else if ($url[1] == 'verified') {
             // FOR NON API CONTROLLER
             $this->view('user/verified');
-
+        } else if ($url[1] == 'logout') {
+            session_start();
+            session_destroy();
+            header('Location: /login');
         } else if ($url[1] == 'admin' && !isset($url[2])) {
             // FOR NON API CONTROLLER
             $this->controller = 'DashboardController';
@@ -292,7 +312,7 @@ class App
 
     public function view($view, $data = array())
     {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/compcen/views/' . $view . '.php';
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/views/' . $view . '.php';
     }
 
     public function parseUrl()

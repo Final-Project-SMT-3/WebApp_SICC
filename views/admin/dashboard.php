@@ -1,5 +1,4 @@
 <?php
-
 include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 ?>
 

@@ -1,11 +1,23 @@
 <?php
+session_start();
+
+if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
+    if ($_SESSION['userType'] === 'mahasiswa') {
+        header('Location: /verified');
+        exit;
+    } else if ($_SESSION['userType'] === 'dosen') {
+        header('Location: /admin');
+        exit;
+    }
+}
+
 include("components/head.php");
 ?>
 
 <div id="login" class="container-fluid">
     <div class="row vh-100">
         <div class="col-lg-6 d-flex justify-content-center align-items-center">
-            <form action="/admin" method="POST" class="card-form">
+            <form action="/login/login" method="POST" class="card-form">
                 <div class="title-forms">
                     <h3 class="title">Sign In</h3>
                     <div class="underline mb-4"></div>

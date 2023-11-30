@@ -20,39 +20,42 @@
                         <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/MasterArtikel" dataSelected="admin/artikel/add"
-                        aria-expanded="false">
-                        <span>
-                            <i class="ti ti-news"></i>
-                        </span>
-                        <span class="hide-menu">Artikel</span>
-                    </a>
-                </li>
-                <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/MasterLomba" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-trophy"></i>
-                        </span>
-                        <span class="hide-menu">Lomba</span>
-                    </a>
-                </li>
-                <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/MasterFaq" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-question-mark"></i>
-                        </span>
-                        <span class="hide-menu">FAQ</span>
-                    </a>
-                </li>
-                <li class="sidebar-item mt-2">
-                    <a class="sidebar-link" href="/admin/pengajuan" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-checklist"></i>
-                        </span>
-                        <span class="hide-menu">Pengajuan</span>
-                    </a>
-                </li>
+                <?php if ($_SESSION['userType'] == 'admin') { ?>
+                    <li class="sidebar-item mt-2">
+                        <a class="sidebar-link" href="/admin/MasterArtikel" dataSelected="admin/artikel/add"
+                            aria-expanded="false">
+                            <span>
+                                <i class="ti ti-news"></i>
+                            </span>
+                            <span class="hide-menu">Artikel</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item mt-2">
+                        <a class="sidebar-link" href="/admin/MasterLomba" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-trophy"></i>
+                            </span>
+                            <span class="hide-menu">Lomba</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item mt-2">
+                        <a class="sidebar-link" href="/admin/MasterFaq" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-question-mark"></i>
+                            </span>
+                            <span class="hide-menu">FAQ</span>
+                        </a>
+                    </li>
+                <?php } else if ($_SESSION['userType'] == 'dosen') { ?>
+                        <li class="sidebar-item mt-2">
+                            <a class="sidebar-link" href="/admin/pengajuan" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-checklist"></i>
+                                </span>
+                                <span class="hide-menu">Pengajuan</span>
+                            </a>
+                        </li>
+                <?php } ?>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

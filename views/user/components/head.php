@@ -12,6 +12,7 @@ if (strpos($current_url, '/login') !== false) {
 } elseif (strpos($current_url, '/changePassword') !== false) {
     $title = "Change Password Page";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

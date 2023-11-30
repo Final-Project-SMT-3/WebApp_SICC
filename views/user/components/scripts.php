@@ -5,6 +5,12 @@
     /**
    * Daftar Lomba logic
    */
+    window.onload = function () {
+        setTimeout(function () {
+            document.getElementById('gambarVerified').src = '/public/assets/landing_page/img/verified_loop.gif';
+        }, 2000);
+    };
+
     let currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
 
@@ -75,6 +81,7 @@
         }
         showTab(currentTab);
     }
+
 
 </script>
 </body>
