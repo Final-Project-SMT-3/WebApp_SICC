@@ -269,6 +269,38 @@ class App
 
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
+        } else if ($url[2] == 'MasterJuara') {
+            $methodName = $url[3] ?? 'index';
+            // FOR NON API CONTROLLER
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $url[2] . "Controller.php")) {
+                $this->controller = (($url[2])) . 'Controller';
+                unset($url[2]);
+            }
+
+            // GET Controller
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+
+            if (isset($url[3])) {
+                if (method_exists($this->controller, $methodName)) {
+                    $this->method = $methodName;
+                    unset($url[3]);
+                }
+            } else {
+                $this->method = 'index';
+            }
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
         } else if ($url[2] == 'pengajuan') {
             // FOR NON API CONTROLLER
             $this->controller = 'PengajuanController';

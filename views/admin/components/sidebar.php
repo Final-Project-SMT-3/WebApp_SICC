@@ -39,6 +39,14 @@
                         </a>
                     </li>
                     <li class="sidebar-item mt-2">
+                        <a class="sidebar-link" href="/admin/MasterJuara" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-award"></i>
+                            </span>
+                            <span class="hide-menu">Juara</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item mt-2">
                         <a class="sidebar-link" href="/admin/MasterFaq" aria-expanded="false">
                             <span>
                                 <i class="ti ti-question-mark"></i>

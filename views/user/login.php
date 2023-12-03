@@ -8,6 +8,9 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
     } else if ($_SESSION['userType'] === 'dosen') {
         header('Location: /admin');
         exit;
+    } else if ($_SESSION['userType'] === 'admin') {
+        header('Location: /admin');
+        exit;
     }
 }
 
