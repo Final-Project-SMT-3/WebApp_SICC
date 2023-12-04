@@ -126,8 +126,44 @@ class LombaModel
     {
         try {
             $nama = $request[0]['nama'] ?? null;
-            $foto = $request['foto'] ?? null;
             $deskripsi = $request[0]['deskripsi'] ?? null;
+
+            //ambil gambar
+            $targetDirectory = $_SERVER['DOCUMENT_ROOT'] . '/storage/public/'; // Folder tujuan untuk menyimpan gambar
+            $namaFileBaru = $nama . '.' . pathinfo($_FILES["gambar"]["name"], PATHINFO_EXTENSION);
+            $targetFile = $targetDirectory . $namaFileBaru;
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+            // Validasi tipe file
+            $allowedTypes = array("jpg", "jpeg", "png", "gif");
+            if (!in_array($imageFileType, $allowedTypes)) {
+                echo "Hanya file JPG, JPEG, PNG, dan GIF yang diizinkan.";
+                $uploadOk = 0;
+            }
+
+            // Validasi ukuran file 
+            if ($_FILES["gambar"]["size"] > 5000000) {
+                echo "Ukuran file terlalu besar. Maksimum 5MB.";
+                $uploadOk = 0;
+            }
+
+            // Cek apakah file sudah ada
+            if (file_exists($targetFile)) {
+                echo "Maaf, file sudah ada.";
+                $uploadOk = 0;
+            }
+
+            // Lakukan upload jika lolos validasi
+            if ($uploadOk == 0) {
+                echo "Upload gagal.";
+            } else {
+                if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $targetFile)) {
+                    echo "File " . htmlspecialchars(basename($_FILES["gambar"]["name"])) . " berhasil diunggah.";
+                } else {
+                    echo "Terjadi kesalahan saat mengunggah file.";
+                }
+            }
 
             // Memulai transaksi
             $this->conn->beginTransaction();
@@ -143,10 +179,11 @@ class LombaModel
                 $lastinsertedId = $this->conn->lastInsertId();
 
                 // Insert detail lomba dengan ID yang didapatkan sebelumnya
-                $queryInsertDetail = "INSERT INTO master_detail_lomba(id_mst_lomba, detail_lomba, created_at) VALUES(:idLomba, :detail_lomba, now())";
+                $queryInsertDetail = "INSERT INTO master_detail_lomba(id_mst_lomba, detail_lomba,foto, created_at) VALUES(:idLomba, :detail_lomba, :foto, now())";
                 $resultInsertDetail = $this->conn->prepare($queryInsertDetail);
                 $resultInsertDetail->bindParam(':idLomba', $lastinsertedId);
                 $resultInsertDetail->bindParam(':detail_lomba', $deskripsi);
+                $resultInsertDetail->bindParam(':foto', $namaFileBaru);
                 $res2 = $resultInsertDetail->execute();
 
                 if ($res2) {
@@ -194,31 +231,85 @@ class LombaModel
 
     public function update($request = [])
     {
-        $this->conn->beginTransaction();
         try {
-            $id = $request[0]['id'];
             $nama = $request[0]['nama'] ?? null;
             $deskripsi = $request[0]['deskripsi'] ?? null;
-            $foto = $request['foto'] ?? null;
-            $query = "UPDATE master_lomba SET nama_lomba = :nama, foto = :foto, deskripsi= :deskripsi WHERE id = $id";
-            $result = $this->conn->prepare($query);
-            $result->bindParam(':nama', $nama);
-            $result->bindParam(':deskripsi', $deskripsi);
-            $result->bindParam(':foto', $foto);
-            $res = $result->execute();
-            if ($res) {
-                $this->conn->commit();
-                return [
-                    'status' => true
-                ];
+
+            //ambil gambar
+            $targetDirectory = $_SERVER['DOCUMENT_ROOT'] . '/storage/public/'; // Folder tujuan untuk menyimpan gambar
+            $namaFileBaru = $nama . '.' . pathinfo($_FILES["gambar"]["name"], PATHINFO_EXTENSION);
+            $targetFile = $targetDirectory . $namaFileBaru;
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+            // Validasi tipe file
+            $allowedTypes = array("jpg", "jpeg", "png", "gif");
+            if (!in_array($imageFileType, $allowedTypes)) {
+                echo "Hanya file JPG, JPEG, PNG, dan GIF yang diizinkan.";
+                $uploadOk = 0;
             }
-        } catch (Exception $e) {
+
+            // Validasi ukuran file 
+            if ($_FILES["gambar"]["size"] > 5000000) {
+                echo "Ukuran file terlalu besar. Maksimum 5MB.";
+                $uploadOk = 0;
+            }
+
+            // Cek apakah file sudah ada
+            if (file_exists($targetFile)) {
+                echo "Maaf, file sudah ada.";
+                $uploadOk = 0;
+            }
+
+            // Lakukan upload jika lolos validasi
+            if ($uploadOk == 0) {
+                echo "Upload gagal.";
+            } else {
+                if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $targetFile)) {
+                    echo "File " . htmlspecialchars(basename($_FILES["gambar"]["name"])) . " berhasil diunggah.";
+                } else {
+                    echo "Terjadi kesalahan saat mengunggah file.";
+                }
+            }
+
+            // Memulai transaksi
+            $this->conn->beginTransaction();
+
+            // Insert master lomba
+            $queryInsertMaster = "INSERT INTO master_lomba(nama_lomba) VALUES(:nama)";
+            $resultInsertMaster = $this->conn->prepare($queryInsertMaster);
+            $resultInsertMaster->bindParam(':nama', $nama);
+            $res1 = $resultInsertMaster->execute();
+
+            if ($res1) {
+                // Mendapatkan ID terakhir yang di-generate dari operasi INSERT sebelumnya
+                $lastinsertedId = $this->conn->lastInsertId();
+
+                // Insert detail lomba dengan ID yang didapatkan sebelumnya
+                $queryInsertDetail = "INSERT INTO master_detail_lomba(id_mst_lomba, detail_lomba,foto, created_at) VALUES(:idLomba, :detail_lomba, :foto, now())";
+                $resultInsertDetail = $this->conn->prepare($queryInsertDetail);
+                $resultInsertDetail->bindParam(':idLomba', $lastinsertedId);
+                $resultInsertDetail->bindParam(':detail_lomba', $deskripsi);
+                $resultInsertDetail->bindParam(':foto', $namaFileBaru);
+                $res2 = $resultInsertDetail->execute();
+
+                if ($res2) {
+                    // Commit transaksi jika kedua operasi INSERT berhasil
+                    $this->conn->commit();
+                    return [
+                        'status' => true
+                    ];
+                }
+            }
+
+            // Rollback transaksi jika ada operasi INSERT yang gagal
             $this->conn->rollBack();
             return [
                 'status' => false,
-                'error_message' => $e->getMessage()
+                'error_message' => 'Gagal melakukan operasi INSERT'
             ];
-        } catch (PDOException $e) {
+        } catch (Exception $e) {
+            // Rollback transaksi dan tangani exception
             $this->conn->rollBack();
             return [
                 'status' => false,

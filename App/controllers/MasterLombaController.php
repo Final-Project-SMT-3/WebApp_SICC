@@ -35,7 +35,7 @@ class MasterLombaController extends Controller
     public function edit($id)
     {
         $data = $this->model->getLomba($id);
-        $this->view('admin/pages/lomba/edit', $data);
+        $this->view('admin/pages/lomba/lomba_edit', $data);
     }
 
     public function update()

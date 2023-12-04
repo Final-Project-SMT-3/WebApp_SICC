@@ -42,11 +42,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Gambar</label>
-                                    <input type="file" class="form-control" id="" onchange="loadFile(event)">
+                                    <input value="<?= $data[0]['foto'] ?>" type="file" class="form-control" id=""
+                                        onchange="loadFile(event)">
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Preview</label>
-                                    <img id="output" width="350" height="160" class="img-thumbnail">
+                                    <img src="/storage/public/<?= $data[0]['foto'] ?>" id="output" width="350"
+                                        height="160" class="img-thumbnail">
                                 </div>
                             </div>
                         </div>

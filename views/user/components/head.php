@@ -24,8 +24,7 @@ if (strpos($current_url, '/login') !== false) {
         <?= $title; ?>
     </title>
     <link rel="shortcut icon" type="image/png" href="/public/assets/landing_page/img/logo.png" />
+    <link href="/public/assets/landing_page/vendor/aos/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/assets/landing_page/css/styles.css">
 </head>
-
-<body>

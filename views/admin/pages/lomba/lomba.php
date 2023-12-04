@@ -36,9 +36,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                         style="width:100%">
                         <thead>
                             <tr>
-                                <th>Nomor</th>
+                                <th style="width: 50px;">Nomor</th>
                                 <th>Nama Lomba</th>
-                                <th>Deskripsi</th>
+                                <th style="width: 300px;">Deskripsi</th>
                                 <th>Gambar</th>
                                 <th>Aksi</th>
                             </tr>
@@ -58,7 +58,8 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                                         <td>
                                             <?= $item['detail_lomba'] ?? '-' ?>
                                         </td>
-                                        <td><img class="img-fluid rounded-2" src="https://picsum.photos/237/" alt=""></td>
+                                        <td><img class="img-fluid rounded-2" src="/storage/public/<?= $item['foto'] ?? '-' ?>"
+                                                alt="" width="100"></td>
                                         <td>
                                             <div class="d-flex justify-content-between">
                                                 <button type="button" class="btn btn-warning m-1">

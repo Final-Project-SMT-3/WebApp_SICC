@@ -1,10 +1,14 @@
 <script src="/public/assets/landing_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/public/assets/landing_page/js/script.js"></script>
 <script src="/public/assets/landing_page/vendor/aos/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 <script>
+
     /**
    * Daftar Lomba logic
    */
+
     window.onload = function () {
         setTimeout(function () {
             document.getElementById('gambarVerified').src = '/public/assets/landing_page/img/verified_loop.gif';
