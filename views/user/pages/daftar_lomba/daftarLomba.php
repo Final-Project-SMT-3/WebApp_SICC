@@ -12,13 +12,30 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/user/components/head.php');
                 <div class="title-forms">
                     <h3 class="title">Daftar Lomba</h3>
                     <div style="width: 350px;" class="underline mb-4"></div>
-                    <p>Masukkan kode OTP yang sudah kami kirimkan melalui e-mail<br>lalu ubah passwordmu
-                    </p>
                 </div>
                 <div class="inputGroup mt-4">
                     <!-- Steps -->
                     <div class="tab">
-                        <h3>Step 1: Pilih Lomba</h3>
+                        <h3>Step 1: Membuat Password</h3>
+                        <!-- Input fields for leader's biodata -->
+                        <div class="input">
+                            <input class="input-field" type="number" min="0" max="99999" name="otp" required />
+                            <label class="input-label">Kode OTP</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-field" type="text" min="0" max="99999" name="otp" required />
+                            <label class="input-label">Password</label>
+                        </div>
+                        <!-- Next and Previous buttons -->
+                        <button type="button" class="prevBtn btn" onclick="nextPrev(-1)">
+                            Previous
+                        </button>
+                        <button type="button" class="nextBtn btn" onclick="nextPrev(1)">
+                            Next
+                        </button>
+                    </div>
+                    <div class="tab">
+                        <h3>Step 2: Pilih Lomba</h3>
                         <!-- Input fields for leader's biodata -->
                         <?php foreach ($data as $key => $item) { ?>
                             <div class="form-check">
@@ -35,6 +52,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/user/components/head.php');
                     </div>
 
                     <div class="tab">
+                        <h3>Step 3: Pilih Lomba</h3>
                         <div class="input">
                             <input class="input-field" type="text" id="namaTim" name="memberName" required />
                             <label for="memberName" class="input-label">Nama Tim</label>
@@ -49,7 +67,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/user/components/head.php');
                     </div>
 
                     <div class="tab">
-                        <h3>Biodata Kelompok</h3>
+                        <h3>Step 4: Biodata Kelompok</h3>
                         <!-- Input fields for member's biodata -->
                         <label for="memberName">Nama Ketua:</label>
                         <input type="text" id="memberName" name="namaKetua" required />
