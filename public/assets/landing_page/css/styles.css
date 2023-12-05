@@ -569,10 +569,6 @@ article {
   }
 }
 
-.blog_details p {
-  margin-bottom: 30px;
-}
-
 .blog_details a {
   color: #000;
 }
@@ -592,43 +588,6 @@ article {
     font-size: 24px;
     margin-bottom: 15px;
   }
-}
-
-.blog-info-link {
-  padding: 0;
-  list-style-type: none;
-}
-
-.blog-info-link li {
-  float: left;
-  font-size: 14px;
-}
-
-.blog-info-link li a {
-  color: #999999;
-}
-
-.blog-info-link li i,
-.blog-info-link li span {
-  font-size: 13px;
-  margin-right: 5px;
-}
-
-.blog-info-link li::after {
-  content: "|";
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.blog-info-link li:last-child::after {
-  display: none;
-}
-
-.blog-info-link::after {
-  content: "";
-  display: block;
-  clear: both;
-  display: table;
 }
 /*--------------------------------------------------------------
 # Footer

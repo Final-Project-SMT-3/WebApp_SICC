@@ -16,29 +16,36 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/user/components/head.php');
                     <p>Berita Terkini</p>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 mb-5 mb-lg-0">
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0 img-cropped"
-                                    src="/public/assets/landing_page/img/404.png" alt="">
+                    <?php
+                    if (count($data) > 0) {
+                        foreach ($data as $key => $item) { ?>
+                            <div class="col-lg-8 mb-5 mb-lg-0">
+                                <article class="blog_item">
+                                    <div class="blog_item_img">
+                                        <img class="card-img rounded-0 img-cropped"
+                                            src="/storage/public/blog/<?= $item['gambar'] ?>" alt="">
+                                    </div>
+                                    <div class="blog_details">
+                                        <h6>
+                                            <?= $item['created_at'] ?>
+                                        </h6>
+                                        <a class="d-inline-block" href="/blog/<?= $item['slug'] ?>">
+                                            <h1 style="font-weight: bold">
+                                                <?= $item['judul'] ?>
+                                            </h1>
+                                        </a>
+                                        <p>
+                                            <?= $item['headline'] ?>...
+                                        </p>
+                                    </div>
+                                </article>
                             </div>
-                            <div class="blog_details">
-                                <h6>17 November 2023</h6>
-                                <a class="d-inline-block" href="/blog/berita/coba-judul">
-                                    <h1 style="font-weight: bold">Coba Judul</h1>
-                                </a>
-                                <p style=" height: 80px; overflow: hidden;">Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Neque illo eaque dolore esse tempora eligendi accusamus explicabo.
-                                    Quisquam quia, ipsam ad esse, laudantium voluptas obcaecati deserunt perspiciatis
-                                    quasi consectetur cumque.</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="bx bxs-user"></i>admin</a></li>
-                                    <li><a href="blog/berita"><i class="bx bx-category"></i>Berita</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </article>
-                    </div>
+                        <?php }
+                    } else { ?>
+                        <div class="col-lg-8 mb-5 mb-lg-0">
+                            <h1>Data Kosong</h1>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>

@@ -56,11 +56,27 @@
                     </li>
                 <?php } else if ($_SESSION['userType'] == 'dosen') { ?>
                         <li class="sidebar-item mt-2">
-                            <a class="sidebar-link" href="/admin/pengajuan" aria-expanded="false">
+                            <a class="sidebar-link" href="/admin/PengajuanBimbingan" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-checklist"></i>
                                 </span>
-                                <span class="hide-menu">Pengajuan</span>
+                                <span class="hide-menu">Pengajuan Bimbingan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item mt-2">
+                            <a class="sidebar-link" href="/admin/PengajuanJudul" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-checklist"></i>
+                                </span>
+                                <span class="hide-menu">Pengajuan Judul</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item mt-2">
+                            <a class="sidebar-link" href="/admin/PengajuanProposal" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-checklist"></i>
+                                </span>
+                                <span class="hide-menu">Pengajuan Proposal</span>
                             </a>
                         </li>
                 <?php } ?>

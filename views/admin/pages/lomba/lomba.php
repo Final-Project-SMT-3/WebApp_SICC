@@ -71,7 +71,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                                                             class="ti ti-trash"></i></a>
                                                 </button>
                                             </div>
-
                                         </td>
                                     </tr>
                                     <?php

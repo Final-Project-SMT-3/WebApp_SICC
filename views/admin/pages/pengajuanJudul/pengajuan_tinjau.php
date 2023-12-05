@@ -36,6 +36,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                                     class="ms-2 ti ti-download"></i></button></a>
                     </div>
                     <form class="row" action="#" method="POST">
+                        <input type="text" name="id" value="<?= $data['id'] ?>">
                         <div class="mb-3 col-md-12">
                             <label class="form-label">Tanggapan terkait pengajuan proposal</label>
                             <textarea placeholder="Tulis tanggapan disini.." name="" id="" rows="3"

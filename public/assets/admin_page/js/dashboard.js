@@ -2,6 +2,23 @@ $(function () {
   // =====================================
   // Profit
   // =====================================
+
+  function updateChartWithDataFromServer() {
+    $.ajax({
+      url: "../.././../app/controllers/getDataForChartProposal.php", // URL ke script PHP yang mengambil data baru dari database
+      method: "GET",
+      success: function (response) {
+        var newData = JSON.parse(response);
+        apexChart.updateSeries([
+          { data: newData.total },
+          { data: newData.lomba },
+        ]);
+      },
+      error: function (xhr, status, error) {
+        console.error(error);
+      },
+    });
+  }
   var chart = {
     series: [
       {

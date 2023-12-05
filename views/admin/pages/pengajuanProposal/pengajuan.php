@@ -31,29 +31,37 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                     <div class="d-flex justify-content-between mb-4">
                         <p>Ini adalah halaman untuk mengatur pengajuan proposal mahasiswa</p>
                     </div>
-                    <table id="dataTables" class="table table-hover" style="width:100%">
+                    <table id="<?= count($data) > 0 ? 'dataTables' : '' ?>" class="table table-hover"
+                        style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
+                                <th>Nomor</th>
+                                <th>Nama Kelompok</th>
+                                <th>Judul</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011-04-25</td>
-                                <td><a href="pengajuan/tinjauan"><button class="btn btn-info"><i
-                                                class="ti ti-clipboard-text" style="font-size: 1rem;"></i></button></a>
-                                </td>
-                            </tr>
-
+                            <?php
+                            if (count($data) > 0) {
+                                foreach ($data as $key => $item) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $key + 1 ?>
+                                        </td>
+                                        <td>
+                                            <?= $item['nama_kelompok'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $item['judul'] ?>
+                                        </td>
+                                        <td><a href="PengajuanProposal/tinjauan/<?= $item['id'] ?>"><button
+                                                    class="btn btn-info"><i class="ti ti-clipboard-text"
+                                                        style="font-size: 1rem;"></i></button></a>
+                                        </td>
+                                    </tr>
+                                <?php }
+                            } ?>
                         </tbody>
                     </table>
                 </div>
