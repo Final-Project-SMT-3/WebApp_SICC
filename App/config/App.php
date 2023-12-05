@@ -419,13 +419,13 @@ class App
         } else if ($url[1] == 'API') {
             $methodName = $url[3];
             // FOR API CONTROLLER
-            if (file_exists("../App/controllers/API/" . ucfirst($url[2]) . "Controller.php")) {
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/API/" . $url[2] . "Controller.php")) {
                 $this->controller = ucfirst($url[2]) . 'Controller';
                 unset($url[2]);
             }
 
             // GET Controller
-            require_once '../App/controllers/API/' . $this->controller . '.php';
+            require_once $_SERVER['DOCUMENT_ROOT'] . '/App/controllers/API/' . $this->controller . '.php';
             $this->controller = new $this->controller;
 
             if (isset($url[3])) {
