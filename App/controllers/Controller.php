@@ -7,6 +7,10 @@ class Controller
     {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/views/' . $view . '.php';
     }
+    public function viewIndexLomba($view, $data = array(), $dataLomba = array())
+    {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/views/' . $view . '.php';
+    }
 
     public function getToken()
     {

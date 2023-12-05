@@ -43,13 +43,14 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                             <label class="form-label">Tipe</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="radioTipe" id="flexRadioDefault1"
-                                    checked>
+                                    value="faq" checked>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     FAQ
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="radioTipe" id="flexRadioDefault2">
+                                <input class="form-check-input" type="radio" name="radioTipe" id="flexRadioDefault2"
+                                    value="tips">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Tips
                                 </label>
