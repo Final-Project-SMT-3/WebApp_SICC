@@ -48,12 +48,29 @@ class App
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
 
+        } else if ($url[1] == 'verified') {
+            $this->view('user/verified');
         } else if ($url[1] == 'login') {
             // FOR NON API CONTROLLER
-            $this->controller = 'LoginController';
+            $methodName = $url[2] ?? 'index';
+            // FOR NON API CONTROLLER
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $url[1] . "Controller.php")) {
+                $this->controller = 'LoginController';
+                unset($url[1]);
+            }
+
+            // GET Controller
             require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
             $this->controller = new $this->controller;
-            $this->method = 'index';
+
+            if (isset($url[2])) {
+                if (method_exists($this->controller, $methodName)) {
+                    $this->method = $methodName;
+                    unset($url[2]);
+                }
+            } else {
+                $this->method = 'index';
+            }
 
             // Parsing parameter
             if (!empty($url)) {
@@ -67,7 +84,7 @@ class App
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
 
-        } else if ($url[1] == 'register') {
+        } else if ($url[1] == 'register' && !isset($url[2])) {
             // FOR NON API CONTROLLER
             $this->controller = 'RegisterController';
             require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
@@ -86,7 +103,26 @@ class App
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
 
-        }else if ($url[1] == 'forgetPassword') {
+        }else if ($url[1] == 'register' && isset($url[2])) {
+            // FOR NON API CONTROLLER
+            $this->controller = 'RegisterController';
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+            $this->method = $url[2];
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
+
+        } else if ($url[1] == 'forgetPassword') {
             // FOR NON API CONTROLLER
             $this->controller = 'ForgetPassController';
             require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
@@ -105,7 +141,71 @@ class App
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
 
-        }else if ($url[1] == 'admin' && !isset($url[2])) {
+        } else if ($url[1] == 'changePassword') {
+            // FOR NON API CONTROLLER
+            $this->controller = 'ChangePassController';
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+            $this->method = 'index';
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
+
+        } else if ($url[1] == 'daftarLomba') {
+            // FOR NON API CONTROLLER
+            $this->controller = 'DaftarLombaController';
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+            $this->method = 'index';
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
+
+        } else if ($url[1] == 'blog') {
+            // FOR NON API CONTROLLER
+            $this->controller = 'BlogController';
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+            $this->method = 'index';
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
+
+        } else if ($url[1] == 'verified') {
+            // FOR NON API CONTROLLER
+            $this->view('user/verified');
+        } else if ($url[1] == 'logout') {
+            session_start();
+            session_destroy();
+            header('Location: /login');
+        } else if ($url[1] == 'admin' && !isset($url[2])) {
             // FOR NON API CONTROLLER
             $this->controller = 'DashboardController';
             require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
@@ -176,11 +276,25 @@ class App
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
         } else if ($url[2] == 'MasterFaq') {
+            $methodName = $url[3] ?? 'index';
             // FOR NON API CONTROLLER
-            $this->controller = 'FaqController';
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $url[2] . "Controller.php")) {
+                $this->controller = (($url[2])) . 'Controller';
+                unset($url[2]);
+            }
+
+            // GET Controller
             require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
             $this->controller = new $this->controller;
-            $this->method = 'index';
+
+            if (isset($url[3])) {
+                if (method_exists($this->controller, $methodName)) {
+                    $this->method = $methodName;
+                    unset($url[3]);
+                }
+            } else {
+                $this->method = 'index';
+            }
 
             // Parsing parameter
             if (!empty($url)) {
@@ -193,13 +307,26 @@ class App
 
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
-
-        } else if ($url[2] == 'pengajuan') {
+        } else if ($url[2] == 'MasterJuara') {
+            $methodName = $url[3] ?? 'index';
             // FOR NON API CONTROLLER
-            $this->controller = 'PengajuanController';
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $url[2] . "Controller.php")) {
+                $this->controller = (($url[2])) . 'Controller';
+                unset($url[2]);
+            }
+
+            // GET Controller
             require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
             $this->controller = new $this->controller;
-            $this->method = 'index';
+
+            if (isset($url[3])) {
+                if (method_exists($this->controller, $methodName)) {
+                    $this->method = $methodName;
+                    unset($url[3]);
+                }
+            } else {
+                $this->method = 'index';
+            }
 
             // Parsing parameter
             if (!empty($url)) {
@@ -212,7 +339,102 @@ class App
 
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
+        } else if ($url[2] == 'PengajuanBimbingan') {
+            $methodName = $url[3] ?? 'index';
+            // FOR NON API CONTROLLER
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $url[2] . "Controller.php")) {
+                $this->controller = (($url[2])) . 'Controller';
+                unset($url[2]);
+            }
 
+            // GET Controller
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+
+            if (isset($url[3])) {
+                if (method_exists($this->controller, $methodName)) {
+                    $this->method = $methodName;
+                    unset($url[3]);
+                }
+            } else {
+                $this->method = 'index';
+            }
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
+        } else if ($url[2] == 'PengajuanJudul') {
+            $methodName = $url[3] ?? 'index';
+            // FOR NON API CONTROLLER
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $url[2] . "Controller.php")) {
+                $this->controller = (($url[2])) . 'Controller';
+                unset($url[2]);
+            }
+
+            // GET Controller
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+
+            if (isset($url[3])) {
+                if (method_exists($this->controller, $methodName)) {
+                    $this->method = $methodName;
+                    unset($url[3]);
+                }
+            } else {
+                $this->method = 'index';
+            }
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
+        } else if ($url[2] == 'PengajuanProposal') {
+            $methodName = $url[3] ?? 'index';
+            // FOR NON API CONTROLLER
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $url[2] . "Controller.php")) {
+                $this->controller = (($url[2])) . 'Controller';
+                unset($url[2]);
+            }
+
+            // GET Controller
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+
+            if (isset($url[3])) {
+                if (method_exists($this->controller, $methodName)) {
+                    $this->method = $methodName;
+                    unset($url[3]);
+                }
+            } else {
+                $this->method = 'index';
+            }
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
         } else if ($url[1] == 'API') {
             $methodName = $url[3];
             // FOR API CONTROLLER

@@ -60,7 +60,7 @@ p {
   --putih: #ffffff;
   --abuabu-gelap: #d9d9d9;
 }
-
+/*----------- User Auth Page -----------*/
 /*--------------------------------------------------------------
 # Login & Register
 --------------------------------------------------------------*/
@@ -144,15 +144,35 @@ input {
 }
 
 /*--------------------------------------------------------------
-# Illustration Login
+# Illustration Login & Register
 --------------------------------------------------------------*/
 .illustration {
   background: url("../img/Illustration_bg.png");
   background-size: cover;
 }
+.illustration-daftar {
+  background: url("../img/Illustration_bg_progress.png");
+  background-size: cover;
+}
 @media (max-width: 768px) {
   div.illustration {
     display: none !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Daftar Lomba 
+--------------------------------------------------------------*/
+
+.tab {
+  display: none;
+  opacity: 0;
+  animation: fadeInOut 0.5s ease forwards;
+}
+
+@keyframes fadeInOut {
+  to {
+    opacity: 1;
   }
 }
 
@@ -241,7 +261,7 @@ input {
 # Section General
 --------------------------------------------------------------*/
 
-section:not(.section-lomba-hero) {
+section:not(.section-lomba-hero):not(.blog) {
   height: 100vh;
   padding: 100px 0;
   overflow: hidden;
@@ -268,7 +288,7 @@ section:not(.section-lomba-hero) {
   width: 100px;
   height: 1px;
   display: inline-block;
-  background: var(--orange);
+  background: var(--biru-font);
   margin: 4px 10px;
 }
 .section-title p {
@@ -327,12 +347,32 @@ section:not(.section-lomba-hero) {
   margin-left: 100px;
 }
 .navbar-nav li {
-  margin-right: 50px;
+  margin-right: 40px;
 }
 .navbar-nav li a {
   font-family: "Poppins";
   font-weight: 500;
+  position: relative;
 }
+.navbar-nav li a.navActive::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--biru-font);
+  animation: underlineAppear 0.5s forwards;
+}
+@keyframes underlineAppear {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 .navbar-nav ul.hitam li a {
   color: var(--hitam);
 }
@@ -342,32 +382,32 @@ section:not(.section-lomba-hero) {
 .navbar-nav li:nth-child(4) {
   margin-right: 50px;
 }
-ul.hitam li:nth-child(5) button {
+ul.hitam li:nth-child(6) button {
   background-color: var(--putih);
 }
-ul.biru li:nth-child(5) button {
+ul.biru li:nth-child(6) button {
   background-color: var(--biru-bg);
   color: var(--putih);
 }
-ul.hitam li:nth-child(5) button:hover {
+ul.hitam li:nth-child(6) button:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
   color: var(--biru-font);
 }
-ul.biru li:nth-child(5) button:hover {
+ul.biru li:nth-child(6) button:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
   color: var(--putih);
 }
-ul.hitam li:nth-child(5) button,
-ul.biru li:nth-child(5) button {
+ul.hitam li:nth-child(6) button,
+ul.biru li:nth-child(6) button {
   border-radius: 20px;
   padding-left: 25px;
   padding-right: 25px;
   transition: 0.5s;
 }
-ul.hitam li:nth-child(5) button:not(:hover),
-ul.biru li:nth-child(5) button:not(:hover) {
+ul.hitam li:nth-child(6) button:not(:hover),
+ul.biru li:nth-child(6) button:not(:hover) {
   box-shadow: none;
 }
 
@@ -452,6 +492,16 @@ ul.biru li:nth-child(5) button:not(:hover) {
   background-color: transparent;
   border-top: none;
 }
+@media (min-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+@media (max-width: 425px) {
+  #informasi {
+    height: auto;
+  }
+}
 /*--------------------------------------------------------------
 # FAQ
 --------------------------------------------------------------*/
@@ -502,6 +552,53 @@ ul.biru li:nth-child(5) button:not(:hover) {
   color: var(--biru-bg);
 }
 
+/* --------------------------------------------------------------
+# Blog
+--------------------------------------------------------------*/
+section.blog {
+  padding: 100px 0;
+  overflow: hidden;
+}
+.blog_item {
+  margin-bottom: 50px;
+}
+article {
+  box-shadow: 0px 10px 20px 0px rgba(221, 221, 221, 0.9);
+}
+.blog_details {
+  padding: 30px 0 20px 10px;
+}
+.img-cropped {
+  width: 100%;
+  height: 375px;
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  .blog_details {
+    padding: 20px 30px 35px 35px;
+  }
+}
+
+.blog_details a {
+  color: #000;
+}
+
+.blog_details a:hover {
+  color: #007bff;
+}
+
+.blog_details h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  .blog_details h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

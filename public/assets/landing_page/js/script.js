@@ -48,9 +48,9 @@
         position >= section.offsetTop &&
         position <= section.offsetTop + section.offsetHeight
       ) {
-        navbarlink.classList.add("active");
+        navbarlink.classList.add("navActive");
       } else {
-        navbarlink.classList.remove("active");
+        navbarlink.classList.remove("navActive");
       }
     });
   };

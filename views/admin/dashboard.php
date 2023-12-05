@@ -1,5 +1,4 @@
 <?php
-
 include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
 ?>
 
@@ -34,14 +33,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                                 <div class="mb-3 mb-sm-0">
                                     <h5 class="card-title fw-semibold">Sales Overview</h5>
                                 </div>
-                                <div>
-                                    <select class="form-select">
-                                        <option value="1">March 2023</option>
-                                        <option value="2">April 2023</option>
-                                        <option value="3">May 2023</option>
-                                        <option value="4">June 2023</option>
-                                    </select>
-                                </div>
                             </div>
                             <div id="chart"></div>
                         </div>
@@ -53,32 +44,20 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                             <!-- Yearly Breakup -->
                             <div class="card overflow-hidden">
                                 <div class="card-body p-4">
-                                    <h5 class="card-title mb-9 fw-semibold">Yearly Breakup</h5>
+                                    <h5 class="card-title mb-9 fw-semibold">Pengajuan Proposal</h5>
                                     <div class="row align-items-center">
-                                        <div class="col-8">
-                                            <h4 class="fw-semibold mb-3">$36,358</h4>
+                                        <div class="col-7">
+                                            <h4 class="fw-semibold mb-3">Total : 130</h4>
                                             <div class="d-flex align-items-center mb-3">
                                                 <span
                                                     class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
                                                     <i class="ti ti-arrow-up-left text-success"></i>
                                                 </span>
                                                 <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                                                <p class="fs-3 mb-0">last year</p>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-4">
-                                                    <span
-                                                        class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                                                    <span class="fs-2">2023</span>
-                                                </div>
-                                                <div>
-                                                    <span
-                                                        class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                                                    <span class="fs-2">2023</span>
-                                                </div>
+                                                <p class="fs-3 mb-0">Tahun Lalu</p>
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-5">
                                             <div class="d-flex justify-content-center">
                                                 <div id="breakup"></div>
                                             </div>

@@ -30,100 +30,82 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                     <h5 class="card-title fw-semibold mb-4">FAQ</h5>
                     <div class="d-flex justify-content-between mb-4">
                         <p>Ini adalah halaman untuk mengatur Frequently Asked Question</p>
-                        <a href="faq/add"><button class="btn btn-primary">Tambah FAQ</button></a>
+                        <a href="/admin/MasterFaq/create"><button class="btn btn-primary">Tambah FAQ</button></a>
                     </div>
-                    <table id="dataTables" class="table" style="width:100%">
+                    <table id="<?= count($data) > 0 ? 'dataTables' : '' ?>" class="table" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>Nomor</th>
+                                <th>Pertanyaan</th>
+                                <th>Jawaban</th>
+                                <th>Tipe</th>
+                                <th>Tanggal Dibuat</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011-04-25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>63</td>
-                                <td>2011-07-25</td>
-                                <td>$170,750</td>
-                            </tr>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>66</td>
-                                <td>2009-01-12</td>
-                                <td>$86,000</td>
-                            </tr>
-                            <tr>
-                                <td>Cedric Kelly</td>
-                                <td>Senior Javascript Developer</td>
-                                <td>Edinburgh</td>
-                                <td>22</td>
-                                <td>2012-03-29</td>
-                                <td>$433,060</td>
-                            </tr>
-                            <tr>
-                                <td>Airi Satou</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>33</td>
-                                <td>2008-11-28</td>
-                                <td>$162,700</td>
-                            </tr>
-                            <tr>
-                                <td>Brielle Williamson</td>
-                                <td>Integration Specialist</td>
-                                <td>New York</td>
-                                <td>61</td>
-                                <td>2012-12-02</td>
-                                <td>$372,000</td>
-                            </tr>
-                            <tr>
-                                <td>Herrod Chandler</td>
-                                <td>Sales Assistant</td>
-                                <td>San Francisco</td>
-                                <td>59</td>
-                                <td>2012-08-06</td>
-                                <td>$137,500</td>
-                            </tr>
-                            <tr>
-                                <td>Rhona Davidson</td>
-                                <td>Integration Specialist</td>
-                                <td>Tokyo</td>
-                                <td>55</td>
-                                <td>2010-10-14</td>
-                                <td>$327,900</td>
-                            </tr>
-                            <tr>
-                                <td>Colleen Hurst</td>
-                                <td>Javascript Developer</td>
-                                <td>San Francisco</td>
-                                <td>39</td>
-                                <td>2009-09-15</td>
-                                <td>$205,500</td>
-                            </tr>
-                            <tr>
-                                <td>Sonya Frost</td>
-                                <td>Software Engineer</td>
-                                <td>Edinburgh</td>
-                                <td>23</td>
-                                <td>2008-12-13</td>
-                                <td>$103,600</td>
-                            </tr>
+                            <?php if (count($data) > 0) {
+                                foreach ($data as $key => $item) {
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <?= $key + 1 ?>
+                                        </td>
+                                        <td>
+                                            <?= $item['pertanyaan'] ?? '-' ?>
+                                        </td>
+                                        <td>
+                                            <?= $item['jawaban'] ?? '-' ?>
+                                        </td>
+                                        <td>
+                                            <?= $item['tipe'] ?? '-' ?>
+                                        </td>
+                                        <td>
+                                            <?= $item['created_at'] ?? '-' ?>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <a class="text-white" href="/admin/MasterFaq/edit/<?= $item['id'] ?>"><button
+                                                        type="button" class="btn btn-warning m-1"><i
+                                                            class="ti ti-pencil"></i></button></a>
+                                                <a class="text-white" href="#"><button type="button" class="btn btn-danger m-1"
+                                                        data-bs-toggle="modal" data-bs-target="#delete"><i
+                                                            class="ti ti-trash"></i></button></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="delete" data-bs-backdrop="static" data-bs-keyboard="false"
+                                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Hapus FAQ</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Yakin ingin menghapus ini?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <a href="/admin/MasterFaq/delete/<?= $item['id'] ?>"><button type="button"
+                                                            class="btn btn-danger">Yakin</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="5" class="text-center">Belum ada data</td>
+                                </tr>
+                                <?php
+                            } ?>
                         </tbody>
                     </table>
                 </div>
@@ -132,6 +114,8 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
         <!-- Content End -->
     </div>
 </div>
+
+
 
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/scripts.php');

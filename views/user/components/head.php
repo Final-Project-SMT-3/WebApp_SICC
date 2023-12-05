@@ -9,7 +9,10 @@ if (strpos($current_url, '/login') !== false) {
     $title = "Register Page";
 } elseif (strpos($current_url, '/forgetPassword') !== false) {
     $title = "Forget Password Page";
+} elseif (strpos($current_url, '/changePassword') !== false) {
+    $title = "Change Password Page";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +23,9 @@ if (strpos($current_url, '/login') !== false) {
     <title>
         <?= $title; ?>
     </title>
-    <link rel="stylesheet" href="/assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/landing_page/css/styles.css">
+    <link rel="shortcut icon" type="image/png" href="/public/assets/landing_page/img/logo.png" />
+    <link href="/public/assets/landing_page/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/assets/landing_page/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/landing_page/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
-
-<body>

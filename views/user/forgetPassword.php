@@ -18,7 +18,7 @@ include("components/head.php");
                         <input name="password" type="email" class="input-field" required />
                         <label class="input-label">Email</label>
                     </div>
-                    <button type="submit" name="submit" class="btn">Sign In</button>
+                    <button type="submit" name="submit" class="btn">Forget Password</button>
                     <p class="mt-2">Belum punya akun? Ayo <a href="/register">daftar disini</a></p>
                 </div>
             </form>

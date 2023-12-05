@@ -1,12 +1,19 @@
 <?php
 
-class Controller{
+class Controller
+{
     private $token = 'KgncmLUc7qvicKI1OjaLYLkPi';
-    public function view($view, $data = array()){
+    public function view($view, $data = array())
+    {
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/views/' . $view . '.php';
+    }
+    public function viewIndexLomba($view, $data = array(), $dataLomba = array())
+    {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/views/' . $view . '.php';
     }
 
-    public function getToken(){
+    public function getToken()
+    {
         return $this->token;
     }
 
