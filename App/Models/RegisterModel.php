@@ -18,7 +18,7 @@ class RegisterModel
     public function getAllLomba()
     {
         try {
-            $query = "SELECT nama_lomba FROM master_lomba JOIN master_detail_lomba ON master_lomba.id = master_detail_lomba.id_mst_lomba";
+            $query = "SELECT nama_lomba, master_detail_lomba.id FROM master_lomba JOIN master_detail_lomba ON master_lomba.id = master_detail_lomba.id_mst_lomba";
 
             $result = $this->conn->prepare($query);
             $result->execute();

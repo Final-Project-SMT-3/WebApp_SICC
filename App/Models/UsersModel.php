@@ -197,6 +197,7 @@ class UsersModel{
     }
 
     public function cekOTP($request = []){
+        var_dump($request);
         $param = new stdClass;
         try{
             $query = "SELECT count(*) FROM otp where kode = :otp and status = '1'";
@@ -264,6 +265,98 @@ class UsersModel{
             $this->conn->rollBack();
             $param->status_code = 500;
             $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
+        } finally{
+            return $param;
+        }
+    }
+
+    public function registerWeb($request = []){
+        
+        $param = new stdClass;
+        // Param for users / ketua
+        $email = htmlspecialchars(trim($request['email']));
+        $username = htmlspecialchars(trim($request['username']));
+
+        $this->conn->beginTransaction();
+        try{
+            $query = "INSERT INTO users( username, email, tipe, created_at) value(:username, :email, 'mahasiswa', NOW())";
+            $result = $this->conn->prepare($query);
+            $result->bindParam(":email", $email);
+            $result->bindParam(":username", $username);
+            $res = $result->execute();
+            if($res){
+                $param->id = $this->conn->lastInsertId();
+                $param->status = true;
+                $param->email = $email;
+                $this->conn->commit();
+            } else{
+                $param->status = false;
+                $param->message = 'Terjadi kesalahan.';
+            }
+        } catch(Exception $e){
+            $this->conn->rollBack();
+            $param->status = 500;
+            $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
+            $param->response = null;
+        } catch(PDOException $e){
+            $this->conn->rollBack();
+            $param->status = 500;
+            $param->message = 'Terjadi kesalahan. ' . $e->getMessage();
+            $param->response = null;
+        } finally {
+            return $param;
+        }
+    }
+
+    public function createPassword($request = []){
+        $param = new stdClass;
+        $namaAnggota = '';
+        $nimAnggota = '';
+        foreach($request['nimAnggota'] as $key => $item){
+            $namaAnggota .= $request['namaAnggota'][$key] . ',';
+            $nimAnggota .= $item;
+        }
+
+        $password = md5($request['password']);
+        $id = $request['id'];
+        $id_detail_lomba = $request['id_detail_lomba'];
+        $namaKetua = $request['namaKetua'];
+        $nimKetua = $request['nimKetua'];
+        $namaTim = $request['nama_tim'];
+        $query = "UPDATE users set password = :password, nama = :namaKetua, no_identitas = :nimKetua where id = $id";
+        try{
+            $this->conn->beginTransaction();
+            $result = $this->conn->prepare($query);
+            $result->bindParam(':password', $password);
+            $result->bindParam(':namaKetua', $namaKetua);
+            $result->bindParam(':nimKetua', $nimKetua);
+            $res = $result->execute();
+            if($res){
+                $queryKelompok = "INSERT INTO kelompok(id_mhs, nama_kelompok, id_detail_lomba, nim_anggota, nama_anggota, created_at) values(:id_mhs, :nama_kelompok, :id_detail_lomba, :namaAnggota, :nimAnggota, now())";
+                $resultKelompok = $this->conn->prepare($queryKelompok);
+                $resultKelompok->bindParam(":id_mhs", $id);
+                $resultKelompok->bindParam(":nama_kelompok", $namaTim);
+                $resultKelompok->bindParam(":id_detail_lomba", $id_detail_lomba);
+                $resultKelompok->bindParam(":nimAnggota", $nimAnggota);
+                $resultKelompok->bindParam(":namaAnggota", $namaAnggota);
+                $resKelompok = $resultKelompok->execute();
+                if($resKelompok){
+                    $this->conn->commit();
+                    $param->status = 'ok';
+                }
+            } else{
+                $this->conn->rollBack();
+                $param->status = 'failed';
+                $param->message = 'Terjadi kesalahan.';
+            }
+        } catch(Exception $e){
+            $this->conn->rollBack();
+            $param->status = 'failed';
+            $param->message = 'Terjadi kesalahan.' . $e->getMessage();
+        } catch(PDOException $e){
+            $this->conn->rollBack();
+            $param->status = 'failed';
+            $param->message = 'Terjadi kesalahan.' . $e->getMessage();
         } finally{
             return $param;
         }

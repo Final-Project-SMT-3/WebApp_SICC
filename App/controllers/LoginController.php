@@ -38,6 +38,8 @@ class LoginController extends Controller
             $_SESSION['userType'] = 'admin';
             $_SESSION['userId'] = $loginData['id'];
             header('Location: /admin');
+        } else{
+            header('Location: /login');
         }
     }
 }

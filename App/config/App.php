@@ -84,12 +84,31 @@ class App
             // Run controler & method
             call_user_func_array([$this->controller, $this->method], $this->params);
 
-        } else if ($url[1] == 'register') {
+        } else if ($url[1] == 'register' && !isset($url[2])) {
             // FOR NON API CONTROLLER
             $this->controller = 'RegisterController';
             require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
             $this->controller = new $this->controller;
             $this->method = 'index';
+
+            // Parsing parameter
+            if (!empty($url)) {
+                unset($url[0]);
+                unset($url[1]);
+                $this->params = array_values($url);
+            } else {
+                $this->params = [];
+            }
+
+            // Run controler & method
+            call_user_func_array([$this->controller, $this->method], $this->params);
+
+        }else if ($url[1] == 'register' && isset($url[2])) {
+            // FOR NON API CONTROLLER
+            $this->controller = 'RegisterController';
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/App/controllers/" . $this->controller . '.php';
+            $this->controller = new $this->controller;
+            $this->method = $url[2];
 
             // Parsing parameter
             if (!empty($url)) {
