@@ -1,5 +1,6 @@
 <?php
-class PengajuanProposalModel
+
+class IndexModel
 {
     private $param;
     private $conn;
@@ -15,21 +16,16 @@ class PengajuanProposalModel
         }
     }
 
-    public function getAllPengajuan()
+    public function getAllFaq()
     {
         try {
-            $query = "SELECT submit_proposal.id,nama_kelompok, judul FROM submit_proposal
-            JOIN pemilihan_dospem ON submit_proposal.id_dospem = pemilihan_dospem.id
-            JOIN submit_judul ON pemilihan_dospem.id = submit_judul.id_dospem
-            JOIN users ON pemilihan_dospem.id_mhs = users.id
-            JOIN kelompok ON users.id = kelompok.id_mhs WHERE submit_proposal.status = 'Waiting Approval'";
+            $query = "SELECT * FROM master_question";
 
             $result = $this->conn->prepare($query);
             $result->execute();
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $res = $result->fetchAll();
             return $res;
-
         } catch (Exception $e) {
 
         } catch (PDOException $e) {
@@ -37,10 +33,10 @@ class PengajuanProposalModel
         }
     }
 
-    public function getPengajuan($id)
+    public function getAllLomba()
     {
         try {
-            $query = "SELECT * WHERE id = $id";
+            $query = "SELECT master_lomba.id, nama_lomba, detail_lomba, foto FROM master_lomba JOIN master_detail_lomba ON master_lomba.id = master_detail_lomba.id_mst_lomba";
 
             $result = $this->conn->prepare($query);
             $result->execute();
@@ -54,4 +50,3 @@ class PengajuanProposalModel
         }
     }
 }
-?>

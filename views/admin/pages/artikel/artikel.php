@@ -30,7 +30,8 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                     <h5 class="card-title fw-semibold mb-4">Artikel</h5>
                     <div class="d-flex justify-content-between mb-4">
                         <p>Ini adalah halaman untuk mengatur artikel</p>
-                        <a href="MasterArtikel/create"><button class="btn btn-primary">Tambah Artikel</button></a>
+                        <a href="/admin/MasterArtikel/create"><button class="btn btn-primary">Tambah
+                                Artikel</button></a>
                     </div>
                     <table id="<?= count($data) > 0 ? 'dataTables' : '' ?>" class="table" style="width:100%">
                         <thead>

@@ -1,26 +1,32 @@
 <?php
 require_once 'Controller.php';
-// require_once $_SERVER['DOCUMENT_ROOT'] . '/App/Models/PengajuanProposalModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/App/Models/PengajuanJudulModel.php';
 
 class PengajuanJudulController extends Controller
 {
     private $model;
 
-    // public function __construct()
-    // {
-    //     $this->model = new PengajuanProposalModel;
-    // }
+    public function __construct()
+    {
+        $this->model = new PengajuanJudulModel;
+    }
 
     public function index()
     {
-        // $data = $this->model->getAllPengajuan();
-        $this->view('admin/pages/pengajuanJudul/pengajuan');
+        session_start();
+        $idUser = $_SESSION['userId'];
+        $data = $this->model->getAllPengajuan($idUser);
+        $this->view('admin/pages/pengajuanJudul/pengajuan', $data);
     }
 
-    public function tinjauan($id)
+    public function updateJudul($id)
     {
-        // $data = $this->model->getPengajuan($id);
-        $this->view('admin/pages/pengajuanJudul/pengajuan_tinjau');
+        $data = $this->model->updatePengajuanJudul($id, [$_POST]);
+        if ($data['status']) {
+            header('Location: /admin/PengajuanJudul');
+        } else {
+            var_dump($data['error_message']);
+        }
     }
 }
 ?>

@@ -68,13 +68,35 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
                                                 <a class="text-white" href="/admin/MasterFaq/edit/<?= $item['id'] ?>"><button
                                                         type="button" class="btn btn-warning m-1"><i
                                                             class="ti ti-pencil"></i></button></a>
-                                                <a class="text-white" href="/admin/MasterFaq/delete/<?= $item['id'] ?>"><button
-                                                        type="button" class="btn btn-danger m-1"><i
+                                                <a class="text-white" href="#"><button type="button" class="btn btn-danger m-1"
+                                                        data-bs-toggle="modal" data-bs-target="#delete"><i
                                                             class="ti ti-trash"></i></button></a>
                                             </div>
 
                                         </td>
                                     </tr>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="delete" data-bs-backdrop="static" data-bs-keyboard="false"
+                                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Hapus FAQ</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Yakin ingin menghapus ini?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <a href="/admin/MasterFaq/delete/<?= $item['id'] ?>"><button type="button"
+                                                            class="btn btn-danger">Yakin</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <?php
                                 }
                             } else {
@@ -92,6 +114,8 @@ include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/head.php');
         <!-- Content End -->
     </div>
 </div>
+
+
 
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/views/admin/components/scripts.php');

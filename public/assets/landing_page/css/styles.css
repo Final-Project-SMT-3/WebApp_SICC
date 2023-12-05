@@ -492,6 +492,16 @@ ul.biru li:nth-child(6) button:not(:hover) {
   background-color: transparent;
   border-top: none;
 }
+@media (min-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+@media (max-width: 425px) {
+  #informasi {
+    height: auto;
+  }
+}
 /*--------------------------------------------------------------
 # FAQ
 --------------------------------------------------------------*/

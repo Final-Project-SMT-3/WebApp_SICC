@@ -41,12 +41,6 @@ class FaqModel
             $jawaban = $request[0]['jawaban'] ?? null;
             $tipe = $request[0]['radioTipe'] ?? null;
 
-            if ($tipe == 'FAQ') {
-                $tipe = 'faq';
-            } else {
-                $tipe = 'tips';
-            }
-
             $queryInsertMaster = "INSERT INTO master_question(pertanyaan, jawaban, tipe, created_at) VALUES(:pertanyaan, :jawaban, :tipe, now())";
             $resultInsertMaster = $this->conn->prepare($queryInsertMaster);
             $resultInsertMaster->bindParam(':pertanyaan', $pertanyaan);
@@ -101,12 +95,6 @@ class FaqModel
             $pertanyaan = $request[0]['pertanyaan'] ?? null;
             $jawaban = $request[0]['jawaban'] ?? null;
             $tipe = $request[0]['radioTipe'] ?? null;
-
-            if ($tipe == 'FAQ') {
-                $tipe = 'faq';
-            } else {
-                $tipe = 'tips';
-            }
 
             $query = "UPDATE master_question SET pertanyaan = :pertanyaan, jawaban = :jawaban, tipe= :tipe, updated_at = now() WHERE id = $id";
             $result = $this->conn->prepare($query);

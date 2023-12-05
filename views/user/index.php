@@ -104,47 +104,32 @@ include("components/head.php");
             </div>
             <div class="container" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-3">
-                        <div class="card">
-                            <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title">Program Kreativitas Mahasiswa (PKM)</h6>
+                    <?php
+                    if (count($dataLomba) > 0) {
+                        foreach ($dataLomba as $key => $item) { ?>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <img src="/storage/public/<?= $item['foto'] ?>" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">
+                                            <?= $item['nama_lomba'] ?>
+                                        </h6>
+                                    </div>
+                                    <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title">Kompetisi Mahasiswa Informatika Politeknik Nasional (KMIPN)</h6>
-                            </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title">Pagelaran Mahasiswa Nasional Bidang Teknologi Informasi dan
-                                    Komunikasi (Gemastik)</h6>
-                            </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
+                        <?php }
+                    } else { ?>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title">Tidak Ada Lomba</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <img src="/public/assets/landing_page/img/card.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title">Pemilihan Mahasiswa Berprestasi (Pilmapres)</h6>
-                            </div>
-                            <div class="card-footer"><a href="/lomba" class="btn btn-primary">Baca Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
+
                 </div>
             </div>
         </section>
@@ -156,97 +141,47 @@ include("components/head.php");
             </div>
             <div class="container" data-aos="fade-up">
                 <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Pertanyaan 1
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the first item's accordion body.</strong> It is shown by default, until
-                                the collapse plugin adds the appropriate classes that we use to style each element.
-                                These classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default
-                                variables. It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                    <?php
+                    if (count($data) > 0) {
+                        foreach ($data as $key => $item) { ?>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse<?= $key + 1 ?>" aria-expanded="true"
+                                        aria-controls="collapse<?= $key + 1 ?>">
+                                        <?= $item['pertanyaan'] ?>
+                                    </button>
+                                </h2>
+                                <div id="collapse<?= $key + 1 ?>"
+                                    class="accordion-collapse collapse <?= $key == 0 ? 'show' : '' ?>"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <?= $item['jawaban']; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }
+                    } else { ?>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Pertanyaan 1
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by default, until
+                                    the collapse plugin adds the appropriate classes that we use to style each element.
+                                    These classes control the overall appearance, as well as the showing and hiding via CSS
+                                    transitions. You can modify any of this with custom CSS or overriding our default
+                                    variables. It's also worth noting that just about any HTML can go within the
+                                    <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Pertanyaan 2
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                until the collapse plugin adds the appropriate classes that we use to style each
-                                element. These classes control the overall appearance, as well as the showing and hiding
-                                via CSS transitions. You can modify any of this with custom CSS or overriding our
-                                default variables. It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Pertanyaan 3
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
-                                the collapse plugin adds the appropriate classes that we use to style each element.
-                                These classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default
-                                variables. It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                Pertanyaan 4
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                until the collapse plugin adds the appropriate classes that we use to style each
-                                element. These classes control the overall appearance, as well as the showing and hiding
-                                via CSS transitions. You can modify any of this with custom CSS or overriding our
-                                default variables. It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                Pertanyaan 5
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
-                                the collapse plugin adds the appropriate classes that we use to style each element.
-                                These classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default
-                                variables. It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
