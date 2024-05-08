@@ -36,9 +36,7 @@ class UsersModel{
                         JOIN master_detail_lomba as detail_lomba ON detail_lomba.id = k.id_detail_lomba 
                         JOIN master_lomba on master_lomba.id = detail_lomba.id_mst_lomba 
                         WHERE us.username = :user 
-                        AND pd.created_at = (
-                            SELECT MAX(created_at) FROM pemilihan_dospem
-                        )
+                        ORDER BY pd.created_at DESC
                         LIMIT 1";
     
             $result = $this->conn->prepare($query);
@@ -184,7 +182,6 @@ class UsersModel{
     }
 
     public function cekOTP($request = []){
-        var_dump($request);
         $param = new stdClass;
         try{
             $query = "SELECT count(*) FROM otp where kode = :otp and status = '1'";
@@ -193,8 +190,8 @@ class UsersModel{
             $result->execute();
             $res = $result->fetchColumn();
 
-            $param->status_code = 200;
             $param->result = $res;
+            $param->status_code = 200;
         } catch(Exception $e){
             $param->status_code = 500;
             $param->error_message = $e->getMessage();
@@ -286,6 +283,7 @@ class UsersModel{
                     LEFT JOIN submit_judul AS sj ON sj.id_dospem = pd.id
                     LEFT JOIN submit_proposal AS sp ON sp.id_judul = sj.id
                     WHERE us.id = :id_user
+                    ORDER BY pd.created_at DESC
                     LIMIT 1";
     
             $result = $this->conn->prepare($query);

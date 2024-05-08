@@ -42,7 +42,9 @@ session_start();
                         <select name="id_detail_lomba" id="" class="form-control">
                             <option value="">Pilih Lomba</option>
                             <?php foreach ($data as $key => $item) { ?>
-                                <option value="<?= $item['id'] ?>"><?= $item['nama_lomba'] ?></option>
+                                <option value="<?= $item['id'] ?>">
+                                    <?= $item['nama_lomba'] ?>
+                                </option>
                             <?php } ?>
 
                         </select>

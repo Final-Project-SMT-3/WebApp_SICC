@@ -232,6 +232,7 @@ class LombaModel
     public function update($request = [])
     {
         try {
+            $id = $request[0]['id'] ?? null;
             $nama = $request[0]['nama'] ?? null;
             $deskripsi = $request[0]['deskripsi'] ?? null;
 
@@ -276,31 +277,50 @@ class LombaModel
             $this->conn->beginTransaction();
 
             // Insert master lomba
-            $queryInsertMaster = "INSERT INTO master_lomba(nama_lomba) VALUES(:nama)";
+            $queryInsertMaster = "UPDATE master_lomba set nama_lomba = :nama";
             $resultInsertMaster = $this->conn->prepare($queryInsertMaster);
             $resultInsertMaster->bindParam(':nama', $nama);
             $res1 = $resultInsertMaster->execute();
 
-            if ($res1) {
-                // Mendapatkan ID terakhir yang di-generate dari operasi INSERT sebelumnya
-                $lastinsertedId = $this->conn->lastInsertId();
+            if ($namaFileBaru == null) {
+                if ($res1) {
 
-                // Insert detail lomba dengan ID yang didapatkan sebelumnya
-                $queryInsertDetail = "INSERT INTO master_detail_lomba(id_mst_lomba, detail_lomba,foto, created_at) VALUES(:idLomba, :detail_lomba, :foto, now())";
-                $resultInsertDetail = $this->conn->prepare($queryInsertDetail);
-                $resultInsertDetail->bindParam(':idLomba', $lastinsertedId);
-                $resultInsertDetail->bindParam(':detail_lomba', $deskripsi);
-                $resultInsertDetail->bindParam(':foto', $namaFileBaru);
-                $res2 = $resultInsertDetail->execute();
+                    // Insert detail lomba dengan ID yang didapatkan sebelumnya
+                    $queryInsertDetail = "UPDATE master_detail_lomba set id_mst_lomba = :idLomba, detail_lomba = :detail_lomba, updated_at = :now()";
+                    $resultInsertDetail = $this->conn->prepare($queryInsertDetail);
+                    $resultInsertDetail->bindParam(':idLomba', $id);
+                    $resultInsertDetail->bindParam(':detail_lomba', $deskripsi);
+                    $res2 = $resultInsertDetail->execute();
 
-                if ($res2) {
-                    // Commit transaksi jika kedua operasi INSERT berhasil
-                    $this->conn->commit();
-                    return [
-                        'status' => true
-                    ];
+                    if ($res2) {
+                        // Commit transaksi jika kedua operasi INSERT berhasil
+                        $this->conn->commit();
+                        return [
+                            'status' => true
+                        ];
+                    }
+                }
+            } else {
+                if ($res1) {
+
+                    // Insert detail lomba dengan ID yang didapatkan sebelumnya
+                    $queryInsertDetail = "UPDATE master_detail_lomba set id_mst_lomba = :idLomba, detail_lomba = :detail_lomba, foto = :foto, updated_at = :now()";
+                    $resultInsertDetail = $this->conn->prepare($queryInsertDetail);
+                    $resultInsertDetail->bindParam(':idLomba', $id);
+                    $resultInsertDetail->bindParam(':detail_lomba', $deskripsi);
+                    $resultInsertDetail->bindParam(':foto', $namaFileBaru);
+                    $res2 = $resultInsertDetail->execute();
+
+                    if ($res2) {
+                        // Commit transaksi jika kedua operasi INSERT berhasil
+                        $this->conn->commit();
+                        return [
+                            'status' => true
+                        ];
+                    }
                 }
             }
+
 
             // Rollback transaksi jika ada operasi INSERT yang gagal
             $this->conn->rollBack();
