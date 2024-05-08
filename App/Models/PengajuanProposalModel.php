@@ -40,7 +40,7 @@ class PengajuanProposalModel
     public function getPengajuan($id)
     {
         try {
-            $query = "SELECT * WHERE id = $id";
+            $query = "SELECT * from submit_proposal WHERE id = $id";
 
             $result = $this->conn->prepare($query);
             $result->execute();
@@ -51,6 +51,40 @@ class PengajuanProposalModel
 
         } catch (PDOException $e) {
 
+        }
+    }
+
+    public function updatePengajuanProposal($request = [])
+    {
+        $this->conn->beginTransaction();
+        try {
+            $id = $request[0]['id'] ?? null;
+            $radio = $request[0]['radio'] ?? null;
+            $review = $request[0]['review'] ?? null;
+
+            $query = "UPDATE submit_proposal SET status = :status, review = :review, updated_at = now() WHERE id = $id";
+            $result = $this->conn->prepare($query);
+            $result->bindParam(':status', $radio);
+            $result->bindParam(':review', $review);
+            $res = $result->execute();
+            if ($res) {
+                $this->conn->commit();
+                return [
+                    'status' => true
+                ];
+            }
+        } catch (Exception $e) {
+            $this->conn->rollBack();
+            return [
+                'status' => false,
+                'error_message' => $e->getMessage()
+            ];
+        } catch (PDOException $e) {
+            $this->conn->rollBack();
+            return [
+                'status' => false,
+                'error_message' => $e->getMessage()
+            ];
         }
     }
 }

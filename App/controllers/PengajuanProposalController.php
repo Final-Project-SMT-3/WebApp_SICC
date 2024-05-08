@@ -22,5 +22,15 @@ class PengajuanProposalController extends Controller
         $data = $this->model->getPengajuan($id);
         $this->view('admin/pages/pengajuanProposal/pengajuan_tinjau', $data);
     }
+
+    public function update()
+    {
+        $data = $this->model->updatePengajuanProposal([$_POST]);
+        if ($data['status']) {
+            header('Location: /admin/PengajuanProposal');
+        } else {
+            var_dump($data['error_message']);
+        }
+    }
 }
 ?>
